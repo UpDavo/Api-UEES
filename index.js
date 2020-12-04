@@ -11,7 +11,7 @@ const app = express();
 var jsonParser = bodyParser.json();
 // var urlencodedParser = bodyParser.urlencoded({ extended: false });
 
-app.get("/api", function (req, res) {
+app.get("/", function (req, res) {
   res.send("Hola esta es la api");
 });
 
