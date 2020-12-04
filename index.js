@@ -17,7 +17,7 @@ app.get("/", function (req, res) {
   res.send("Hola esta es la api");
 });
 
-app.get("/api/campana", jsonParser, function (req, res) {
+app.post("/api/campana", jsonParser, function (req, res) {
   //url api wolkbox
   let urlInsert =
     APIWOLKBOX +
@@ -36,6 +36,7 @@ app.get("/api/campana", jsonParser, function (req, res) {
   const agent = new https.Agent({
     rejectUnauthorized: false,
   });
+
   axios
     .post(urlInsert, { httpsAgent: agent })
     .then((data) => {
