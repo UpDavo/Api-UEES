@@ -3,7 +3,7 @@ const bodyParser = require("body-parser");
 const https = require("https");
 const fetch = require("node-fetch");
 
-// process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
 const port = process.env.PORT || 3000;
 const httpsAgent = new https.Agent({
   rejectUnauthorized: false,
