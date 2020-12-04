@@ -25,17 +25,18 @@ app.get("/", function (req, res) {
 
 app.post("/api/campana", jsonParser, function (req, res) {
   //url api wolkbox
-  let urlInsert =
+  let urlInsert = encodeURI(
     APIWOLKBOX +
-    `&action=insert&type_campaing=preview&campaing=${req.body.campana}&name=${
-      req.body.nombre
-    }&type_id=cc&id=${
-      req.body.id == undefined
-        ? Math.floor(Math.random() * 90000) + 10000
-        : req.body.id
-    }&opt1=${req.body.origen}&opt2=${req.body.interesado}&opt3=${
-      req.body.correo
-    }&agent=ACD&tel01=${req.body.celular}&opt4=${req.body.comentario}`;
+      `&action=insert&type_campaing=preview&campaing=${req.body.campana}&name=${
+        req.body.nombre
+      }&type_id=cc&id=${
+        req.body.id == undefined
+          ? Math.floor(Math.random() * 90000) + 10000
+          : req.body.id
+      }&opt1=${req.body.origen}&opt2=${req.body.interesado}&opt3=${
+        req.body.correo
+      }&agent=ACD&tel01=${req.body.celular}&opt4=${req.body.comentario}`
+  );
   console.log(urlInsert);
 
   instance
