@@ -11,6 +11,10 @@ const app = express();
 var jsonParser = bodyParser.json();
 // var urlencodedParser = bodyParser.urlencoded({ extended: false });
 
+app.get("/api", function (req, res) {
+  res.send("Hola esta es la api");
+});
+
 app.get("/api/campana", jsonParser, function (req, res) {
   //url api wolkbox
   let urlInsert =
