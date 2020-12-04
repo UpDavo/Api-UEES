@@ -4,6 +4,8 @@ const https = require("https");
 const axios = require("axios");
 
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
+let port = process.env.PORT || 3000;
+
 const APIWOLKBOX =
   "https://34.86.151.171/ipdialbox/api_campaing.php?token=7b69645f6469737472697d2d3230323031313234313531363039";
 
@@ -44,6 +46,7 @@ app.get("/api/campana", jsonParser, function (req, res) {
     });
 });
 
-app.listen(3000, () => {
-  console.log("El servidor está inicializado en el puerto 3000");
+//Puerto del servidor
+app.listen(port, () => {
+  console.log(`Servidor iniciado en el puerto ${port}...`);
 });
