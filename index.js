@@ -11,13 +11,17 @@ const APIWOLKBOX =
 const app = express();
 // At instance level
 const instance = axios.create({
+  headers: {
+    "Access-Control-Allow-Origin": "*",
+    "Content-Type": "application/json",
+  },
+  cors: "no-coprs",
   httpsAgent: new https.Agent({
     rejectUnauthorized: false,
   }),
 });
 
 const jsonParser = bodyParser.json();
-// var urlencodedParser = bodyParser.urlencoded({ extended: false });
 
 app.get("/", function (req, res) {
   res.send("Hola esta es la api");
