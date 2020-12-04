@@ -64,13 +64,8 @@ app.post("/campana", (req, res) => {
       "Content-Type": "application/json",
     },
     agent: httpsAgent,
-  })
-    .then((response) => {
-      return res.send(response);
-    })
-    .catch((error) => {
-      return res.send(error);
-    });
+  });
+  res.send("a");
 });
 
 //Puerto del servidor
