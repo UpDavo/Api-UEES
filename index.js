@@ -4,13 +4,19 @@ const https = require("https");
 const axios = require("axios");
 
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
-let port = process.env.PORT || 3000;
-
+const port = process.env.PORT || 3000;
 const APIWOLKBOX =
   "https://34.86.151.171/ipdialbox/api_campaing.php?token=7b69645f6469737472697d2d3230323031313234313531363039";
 
 const app = express();
-var jsonParser = bodyParser.json();
+// At instance level
+const instance = axios.create({
+  httpsAgent: new https.Agent({
+    rejectUnauthorized: false,
+  }),
+});
+
+const jsonParser = bodyParser.json();
 // var urlencodedParser = bodyParser.urlencoded({ extended: false });
 
 app.get("/", function (req, res) {
@@ -32,13 +38,8 @@ app.post("/api/campana", jsonParser, function (req, res) {
     }&agent=ACD&tel01=${req.body.celular}&opt4=${req.body.comentario}`;
   console.log(urlInsert);
 
-  // At request level
-  const agent = new https.Agent({
-    rejectUnauthorized: false,
-  });
-
-  axios
-    .post(urlInsert, { httpsAgent: agent })
+  instance
+    .post(urlInsert)
     .then((data) => {
       res.send(data);
     })
