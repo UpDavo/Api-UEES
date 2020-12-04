@@ -57,7 +57,7 @@ app.post("/campana", (req, res) => {
   //       return res.send(error);
   //     });
 
-  fetch(urlInsert, {
+  fetch("https://jsonplaceholder.typicode.com/todos/1", {
     agent: httpsAgent,
   })
     .then((response) => {
