@@ -58,11 +58,6 @@ app.post("/campana", (req, res) => {
   //     });
 
   fetch(urlInsert, {
-    method: "POST",
-    headers: {
-      "Access-Control-Allow-Origin": "*",
-      "Content-Type": "application/json",
-    },
     agent: httpsAgent,
   })
     .then((response) => {
