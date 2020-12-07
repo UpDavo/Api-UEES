@@ -16,18 +16,6 @@ const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-// At instance level
-// const instance = axios.create({
-//   headers: {
-//     "Access-Control-Allow-Origin": "*",
-//     "Content-Type": "application/json",
-//   },
-//   cors: "no-cors",
-//   httpsAgent: new https.Agent({
-//     rejectUnauthorized: false,
-//   }),
-// });
-
 app.get("/main", (req, res) => {
   return res.send("Hola esta es la api");
 });
