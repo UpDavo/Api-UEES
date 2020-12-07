@@ -9,8 +9,8 @@ const httpsAgent = new https.Agent({
   rejectUnauthorized: false,
 });
 
-const APIWOLKBOX =
-  "https://34.86.151.171/ipdialbox/api_campaing.php?token=7b69645f6469737472697d2d3230323031313234313531363039";
+const APIWOLKBOX = "https://34.86.151.171/ipdialbox/api_campaing.php";
+const TOKEN = "7b69645f6469737472697d2d3230323031313234313531363039";
 
 const app = express();
 app.use(bodyParser.json());
@@ -33,31 +33,25 @@ app.get("/main", (req, res) => {
 });
 
 app.post("/campana", (req, res) => {
-  //url api wolkbox
-  let urlInsert = encodeURI(
-    APIWOLKBOX +
-      `&action=insert&type_campaing=preview&campaing=${req.body.campana}&name=${
-        req.body.nombre
-      }&type_id=cc&id=${
-        req.body.id === undefined
-          ? Math.floor(Math.random() * 90000) + 10000
-          : req.body.id
-      }&opt1=${req.body.origen}&opt2=${req.body.interesado}&opt3=${
-        req.body.correo
-      }&agent=ACD&tel01=${req.body.celular}&opt4=${req.body.comentario}`
+  let url = new URL(APIWOLKBOX);
+  const params = {
+    token: TOKEN,
+    nombre: req.body.nombre,
+    correo: req.body.correo,
+    celular: req.body.celular,
+    comentario: req.body.comentario,
+    interesado: req.body.interesado,
+    id: req.body.id,
+    origen: req.body.origen,
+    campana: req.body.campana,
+  };
+  Object.keys(params).forEach((key) =>
+    url.searchParams.append(key, params[key])
   );
-  console.log(urlInsert);
+  console.log("/n");
+  console.log(url.href);
 
-  //   instance
-  //     .post(urlInsert)
-  //     .then((data) => {
-  //       return res.send(data);
-  //     })
-  //     .catch((error) => {
-  //       return res.send(error);
-  //     });
-
-  fetch("https://jsonplaceholder.typicode.com/todos/1", {
+  fetch(url, {
     agent: httpsAgent,
   })
     .then((response) => {
