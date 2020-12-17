@@ -51,7 +51,12 @@ app.post("/campana", (req, res) => {
 });
 
 app.post("/test", (req, res) => {
-  const data = JSON.parse(JSON.stringify(req.body));
+  const data = {
+    nombre: req.body["contact[first_name]"],
+    apellido: req.body["contact[last_name]"],
+    telefono: req.body["contact[phone]"],
+    telefono: req.body["contact[emailñ]"],
+  };
   console.log(data);
   return res.send("Los datos fueron enviados");
 });
@@ -60,3 +65,16 @@ app.post("/test", (req, res) => {
 app.listen(port, () => {
   console.log(`Servidor iniciado en el puerto ${port}...`);
 });
+
+data = {
+  "contact[id]": "1358",
+  "contact[email]": "ab.cesarcuadradollandan@outlook.com",
+  "contact[first_name]": "Cesar",
+  "contact[last_name]": "Cuadrado",
+  "contact[phone]": "593986523796",
+  "contact[orgname]": "",
+  "contact[customer_acct_name]": "",
+  "contact[tags]": "Externos",
+  "contact[ip4]": "127.0.0.1",
+  seriesid: "9",
+};
