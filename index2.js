@@ -51,9 +51,7 @@ app.post("/campana", (req, res) => {
 });
 
 app.post("/test", (req, res) => {
-  data = {
-    nombre: req.body.contact[email],
-  };
+  const data = JSON.parse(JSON.stringify(req.body));
   console.log(data);
   return res.send("Los datos fueron enviados");
 });
