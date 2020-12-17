@@ -50,6 +50,12 @@ app.post("/campana", (req, res) => {
     });
 });
 
+app.post("/test", (req, res) => {
+  data = req.body;
+  console.log(data);
+  return res.send("Los datos fueron enviados");
+});
+
 //Puerto del servidor
 app.listen(port, () => {
   console.log(`Servidor iniciado en el puerto ${port}...`);
