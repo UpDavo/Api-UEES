@@ -55,14 +55,18 @@ app.post("/campana2", (req, res) => {
   let url = new URL(APIWOLKBOX);
   const params = {
     token: TOKEN,
-    nombre: req.body.nombre,
-    correo: req.body.correo,
-    celular: req.body.celular,
-    comentario: req.body.comentario,
-    interesado: req.body.interesado,
+    action: "insert",
+    type_campaing: "preview",
+    campaing: req.body.campana,
+    name: req.body.nombre,
+    opt3: req.body.correo,
+    tel01: req.body.celular,
+    opt4: req.body.comentario,
+    opt2: req.body.interesado,
+    type_id: "cc",
     id: req.body.id,
-    origen: req.body.origen,
-    campana: req.body.campana,
+    opt1: req.body.origen,
+    agent: "FREE",
   };
   Object.keys(params).forEach((key) =>
     url.searchParams.append(key, params[key])
