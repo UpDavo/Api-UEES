@@ -57,7 +57,7 @@ app.post("/test", (req, res) => {
     telefono: req.body["contact[phone]"],
     email: req.body["contact[email]"],
   };
-  console.log(data);
+  console.log(req.body);
   return res.send("Los datos fueron enviados");
 });
 
