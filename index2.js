@@ -2,6 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const https = require("https");
 const fetch = require("node-fetch");
+const request = require("request");
 
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
 const port = process.env.PORT || 3000;
@@ -48,6 +49,45 @@ app.post("/campana", (req, res) => {
     .catch((error) => {
       return res.send(error);
     });
+});
+
+app.post("/campana2", (req, res) => {
+  let url = new URL(APIWOLKBOX);
+  const params = {
+    token: TOKEN,
+    nombre: req.body.nombre,
+    correo: req.body.correo,
+    celular: req.body.celular,
+    comentario: req.body.comentario,
+    interesado: req.body.interesado,
+    id: req.body.id,
+    origen: req.body.origen,
+    campana: req.body.campana,
+  };
+  Object.keys(params).forEach((key) =>
+    url.searchParams.append(key, params[key])
+  );
+  console.log("/n");
+  console.log(url.href);
+  console.log(process.env.QUOTAGUARDSTATIC_URL);
+  console.log("/n");
+
+  var options = {
+    proxy: process.env.QUOTAGUARDSTATIC_URL,
+    url: url.href,
+    headers: {
+      "User-Agent": "node.js",
+    },
+  };
+
+  function callback(error, response, body) {
+    if (!error && response.statusCode == 200) {
+      console.log(body);
+      res.send(body);
+    }
+  }
+
+  request(options, callback);
 });
 
 app.post("/test", (req, res) => {
