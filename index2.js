@@ -3,7 +3,6 @@ const bodyParser = require("body-parser");
 const https = require("https");
 const fetch = require("node-fetch");
 const request = require("request");
-const cors = require('cors');
 
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
 const port = process.env.PORT || 3000;
@@ -108,7 +107,7 @@ app.post("/test", (req, res) => {
 
 
 //Analisis de usuarios
-app.post("/checkuser/:email", cors(), (req, res) => {
+app.post("/checkuser/:email", (req, res) => {
   var myHeaders = new Headers();
   myHeaders.append("Content-Type", "application/json");
   myHeaders.append("Cookie", "PHPSESSID=acl0oi51f1s3a7du7h4i5s8e9s");
