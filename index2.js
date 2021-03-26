@@ -108,7 +108,6 @@ app.post("/test", (req, res) => {
 
 //Analisis de usuarios
 app.get("/checkuser/:email", cors(), (req, res) => {
-  console.log(req.params.email);
   var request = require("request");
   var options = {
     method: "GET",
@@ -122,7 +121,7 @@ app.get("/checkuser/:email", cors(), (req, res) => {
       nit: "uees",
       modulo: "Estudiantes",
       campo: "EMAIL",
-      valor: "NA@NA.COM",
+      valor: req.params.email,
     }),
   };
   request(options, function (error, response) {
