@@ -131,20 +131,35 @@ app.get("/checkuser/:email", cors(), (req, res) => {
   });
 });
 
+app.post("/crearTicket", cors(), (req, res) => {
+  var options = {
+    method: "POST",
+    url: "https://crm.ipdialbox.com/server/API/cases/insert.php",
+    headers: {
+      Cookie: "PHPSESSID=cqmbn9iajl6gcnjic33dpc7dkp",
+    },
+    formData: {
+      nit: "uees",
+      token: "UJkcTGEuM9GXXjKWrD3geQ8sn75JnDk5",
+      type: "Request",
+      responsible: "agent_12520@uees",
+      owner: "agent_12520@uees",
+      contact: req.body.correoEstudiantil,
+      description: req.body.comentario,
+      status: "Abierto",
+      priority: "baja",
+      solution: "",
+      aditionalFields: `{"Tipo de Requerimiento":"${req.body.tema}","Tema":"${req.body.subtema}","HELP TOPIC":"${req.body.helpTopic}","NIVEL":"${req.body.nivel}","MODALIDAD": "${req.body.modalidad}"}`,
+    },
+  };
+  request(options, function (error, response) {
+    if (error) throw new Error(error);
+    console.log(response.body);
+    res.send(response.body);
+  });
+});
+
 //Puerto del servidor
 app.listen(port, () => {
   console.log(`Servidor iniciado en el puerto ${port}...`);
 });
-
-data = {
-  "contact[id]": "1358",
-  "contact[email]": "ab.cesarcuadradollandan@outlook.com",
-  "contact[first_name]": "Cesar",
-  "contact[last_name]": "Cuadrado",
-  "contact[phone]": "593986523796",
-  "contact[orgname]": "",
-  "contact[customer_acct_name]": "",
-  "contact[tags]": "Externos",
-  "contact[ip4]": "127.0.0.1",
-  seriesid: "9",
-};
