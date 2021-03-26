@@ -3,6 +3,7 @@ const bodyParser = require("body-parser");
 const https = require("https");
 const fetch = require("node-fetch");
 const request = require("request");
+var cors = require('cors')
 
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
 const port = process.env.PORT || 3000;
@@ -11,6 +12,7 @@ const httpsAgent = new https.Agent({
 });
 
 const APIWOLKBOX = "https://34.86.151.171/ipdialbox/api_campaing.php";
+const APICRMWOLKVOX = "https://crm.ipdialbox.com/server/API/query.php";
 const TOKEN = "7b69645f6469737472697d2d3230323031313234313531363039";
 
 const app = express();
@@ -122,3 +124,30 @@ data = {
   "contact[ip4]": "127.0.0.1",
   seriesid: "9",
 };
+
+//Analisis de usuarios
+
+app.post("/checkuser/:email", cors(), (req, res) => {
+  var myHeaders = new Headers();
+  myHeaders.append("Content-Type", "application/json");
+  myHeaders.append("Cookie", "PHPSESSID=acl0oi51f1s3a7du7h4i5s8e9s");
+
+  var dataCrm = JSON.stringify({
+    nit: "uees",
+    modulo: "Estudiantes",
+    campo: "EMAIL",
+    valor: req.params.email,
+  });
+
+  //options to crm
+  let requestOptionsSearchCRM = {
+    headers: myHeaders,
+    method: "POST",
+    redirect: "manual",
+    body: dataCrm,
+  };
+
+  let checkEmail = await fetch(APICRMWOLKVOX, requestOptionsSearchCRM);
+  let respuesta = await checkEmail.text();
+  res.send(respuesta)
+});
