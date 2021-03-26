@@ -105,35 +105,26 @@ app.post("/test", (req, res) => {
   return res.send("Los datos fueron enviados");
 });
 
-
 //Analisis de usuarios
 app.post("/checkuser/:email", (req, res) => {
-  var myHeaders = new Headers();
-  myHeaders.append("Content-Type", "application/json");
-  myHeaders.append("Cookie", "PHPSESSID=acl0oi51f1s3a7du7h4i5s8e9s");
-
-  console.log(req.params.email)
-
-  var dataCrm = JSON.stringify({
-    nit: "uees",
-    modulo: "Estudiantes",
-    campo: "EMAIL",
-    valor: "NA@NA.COM",
-  });
-
-  //options to crm
-  let requestOptionsSearchCRM = {
-    headers: myHeaders,
+  console.log(req.params.email);
+  var options = {
     method: "POST",
-    redirect: "manual",
-    body: dataCrm,
+    url: "https://crm.ipdialbox.com/server/API/query.php",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      nit: "uees",
+      modulo: "Estudiantes",
+      campo: "EMAIL",
+      valor: "NA@NA.COM",
+    }),
   };
-
-  let checkEmail = await fetch(APICRMWOLKVOX, requestOptionsSearchCRM);
-  let respuesta = await checkEmail.text();
-
-  console.log(respuesta)
-  res.send(respuesta)
+  request(options, function (error, response) {
+    if (error) throw new Error(error);
+    console.log(response.body);
+  });
 });
 
 //Puerto del servidor
