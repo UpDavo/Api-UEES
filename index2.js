@@ -3,6 +3,7 @@ const bodyParser = require("body-parser");
 const https = require("https");
 const fetch = require("node-fetch");
 const request = require("request");
+const cors = require('cors');
 
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
 const port = process.env.PORT || 3000;
@@ -103,6 +104,37 @@ app.post("/test", (req, res) => {
   };
   console.log(req.body);
   return res.send("Los datos fueron enviados");
+});
+
+
+//Analisis de usuarios
+app.post("/checkuser/:email", cors(), (req, res) => {
+  var myHeaders = new Headers();
+  myHeaders.append("Content-Type", "application/json");
+  myHeaders.append("Cookie", "PHPSESSID=acl0oi51f1s3a7du7h4i5s8e9s");
+
+  console.log(req.params.email)
+
+  var dataCrm = JSON.stringify({
+    nit: "uees",
+    modulo: "Estudiantes",
+    campo: "EMAIL",
+    valor: "NA@NA.COM",
+  });
+
+  //options to crm
+  let requestOptionsSearchCRM = {
+    headers: myHeaders,
+    method: "POST",
+    redirect: "manual",
+    body: dataCrm,
+  };
+
+  let checkEmail = await fetch(APICRMWOLKVOX, requestOptionsSearchCRM);
+  let respuesta = await checkEmail.text();
+
+  console.log(respuesta)
+  res.send(respuesta)
 });
 
 //Puerto del servidor
