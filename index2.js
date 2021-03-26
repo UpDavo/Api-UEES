@@ -3,6 +3,7 @@ const bodyParser = require("body-parser");
 const https = require("https");
 const fetch = require("node-fetch");
 const request = require("request");
+var cors = require("cors");
 
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
 const port = process.env.PORT || 3000;
@@ -106,13 +107,16 @@ app.post("/test", (req, res) => {
 });
 
 //Analisis de usuarios
-app.post("/checkuser/:email", (req, res) => {
+app.get("/checkuser/:email", cors(), (req, res) => {
   console.log(req.params.email);
+  var request = require("request");
   var options = {
-    method: "POST",
+    method: "GET",
+    proxy: process.env.QUOTAGUARDSTATIC_URL,
     url: "https://crm.ipdialbox.com/server/API/query.php",
     headers: {
       "Content-Type": "application/json",
+      Cookie: "PHPSESSID=cqmbn9iajl6gcnjic33dpc7dkp",
     },
     body: JSON.stringify({
       nit: "uees",
@@ -124,6 +128,7 @@ app.post("/checkuser/:email", (req, res) => {
   request(options, function (error, response) {
     if (error) throw new Error(error);
     console.log(response.body);
+    res.send(response.body);
   });
 });
 
