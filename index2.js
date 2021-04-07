@@ -130,33 +130,28 @@ app.get("/checkuser/:email", cors(), (req, res) => {
   });
 });
 
-app.get(
-  "/consultarTicket",
-  cors(),
-  (req,
-  (res) => {
-    var options = {
-      method: "GET",
-      proxy: process.env.QUOTAGUARDSTATIC_URL,
-      url: "https://crm.ipdialbox.com/server/API/cases/query.php",
-      headers: {
-        "Content-Type": "application/json",
-        Cookie: "PHPSESSID=ole3087c9tfleg61o0m8p02pim",
-      },
-      body: JSON.stringify({
-        nit: "uees",
-        modulo: "cases",
-        campo: "idPrefijo",
-        valor: req.body.ticket,
-      }),
-    };
-    request(options, function (error, response) {
-      if (error) throw new Error(error);
-      console.log(response.body);
-      res.send(response.body);
-    });
-  })
-);
+app.get("/consultarTicket", cors(), (req, res) => {
+  var options = {
+    method: "GET",
+    proxy: process.env.QUOTAGUARDSTATIC_URL,
+    url: "https://crm.ipdialbox.com/server/API/cases/query.php",
+    headers: {
+      "Content-Type": "application/json",
+      Cookie: "PHPSESSID=ole3087c9tfleg61o0m8p02pim",
+    },
+    body: JSON.stringify({
+      nit: "uees",
+      modulo: "cases",
+      campo: "idPrefijo",
+      valor: req.body.ticket,
+    }),
+  };
+  request(options, function (error, response) {
+    if (error) throw new Error(error);
+    console.log(response.body);
+    res.send(response.body);
+  });
+});
 
 app.post("/crearTicket", cors(), (req, res) => {
   var guardado = [];
