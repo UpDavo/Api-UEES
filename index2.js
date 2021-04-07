@@ -108,7 +108,6 @@ app.post("/test", (req, res) => {
 
 //Analisis de usuarios
 app.get("/checkuser/:email", cors(), (req, res) => {
-  var request = require("request");
   var options = {
     method: "GET",
     proxy: process.env.QUOTAGUARDSTATIC_URL,
@@ -131,9 +130,40 @@ app.get("/checkuser/:email", cors(), (req, res) => {
   });
 });
 
+app.get(
+  "/consultarTicket",
+  cors(),
+  (req,
+  (res) => {
+    var options = {
+      method: "GET",
+      proxy: process.env.QUOTAGUARDSTATIC_URL,
+      url: "https://crm.ipdialbox.com/server/API/cases/query.php",
+      headers: {
+        "Content-Type": "application/json",
+        Cookie: "PHPSESSID=ole3087c9tfleg61o0m8p02pim",
+      },
+      body: JSON.stringify({
+        nit: "uees",
+        modulo: "cases",
+        campo: "idPrefijo",
+        valor: req.body.ticket,
+      }),
+    };
+    request(options, function (error, response) {
+      if (error) throw new Error(error);
+      console.log(response.body);
+      res.send(response.body);
+    });
+  })
+);
+
 app.post("/crearTicket", cors(), (req, res) => {
-  var options = {
+  var guardado = [];
+
+  var enviado = {
     method: "POST",
+    proxy: process.env.QUOTAGUARDSTATIC_URL,
     url: "https://crm.ipdialbox.com/server/API/cases/insert.php",
     headers: {
       Cookie: "PHPSESSID=cqmbn9iajl6gcnjic33dpc7dkp",
@@ -149,14 +179,39 @@ app.post("/crearTicket", cors(), (req, res) => {
       status: "Abierto",
       priority: "baja",
       solution: "",
-      aditionalFields: `{"Tipo de Requerimiento":"${req.body.tema}","Tema":"${req.body.subtema}","HELP TOPIC":"${req.body.helpTopic}","NIVEL":"${req.body.nivel}","MODALIDAD": "${req.body.modalidad}"}`,
+      aditionalFields: `{"Tipo de Requerimiento":"${req.body.tema}","Tema":"${req.body.subtema}","HELP TOPIC":"${req.body.helpTopic}","NIVEL":"${req.body.nivel}","MODALIDAD": "${req.body.modalidad}","adjunto": "${req.body.urlPruebas}"}`,
     },
   };
-  request(options, function (error, response) {
+  request(enviado, function (error, response) {
     if (error) throw new Error(error);
     console.log(response.body);
-    res.send(response.body);
+    guardado.push(response.body);
   });
+
+  var actualizado = {
+    method: "PUT",
+    proxy: process.env.QUOTAGUARDSTATIC_URL,
+    url: "https://crm.ipdialbox.com/server/API/update.php",
+    headers: {
+      Cookie: "PHPSESSID=cr56h8n1cphnq7h7nbmqd1taj4",
+    },
+    formData: {
+      nit: "uees",
+      token: "UJkcTGEuM9GXXjKWrD3geQ8sn75JnDk5",
+      modulo: "contacts",
+      wolkvox_id: "606b11ba552ad80cba3a9642",
+      datos: {
+        emailcontact: req.body.correoEstudiantil,
+      },
+    },
+  };
+  request(actualizado, function (error, response) {
+    if (error) throw new Error(error);
+    console.log(response.body);
+    guardado.push(response.body);
+  });
+
+  res.send(guardado);
 });
 
 //Puerto del servidor
