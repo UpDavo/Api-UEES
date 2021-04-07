@@ -130,7 +130,7 @@ app.get("/checkuser/:email", cors(), (req, res) => {
   });
 });
 
-app.get("/consultarTicket", cors(), (req, res) => {
+app.get("/consultarTicket/:ticket", cors(), (req, res) => {
   var options = {
     method: "GET",
     proxy: process.env.QUOTAGUARDSTATIC_URL,
@@ -143,7 +143,7 @@ app.get("/consultarTicket", cors(), (req, res) => {
       nit: "uees",
       modulo: "cases",
       campo: "idPrefijo",
-      valor: req.body.ticket,
+      valor: req.params.ticket,
     }),
   };
   request(options, function (error, response) {
