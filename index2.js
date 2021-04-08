@@ -154,7 +154,7 @@ app.get("/consultarTicket/:ticket", cors(), (req, res) => {
 });
 
 app.post("/crearTicket", cors(), (req, res) => {
-  var guardado = [];
+  var devolver;
 
   var enviado = {
     method: "POST",
@@ -177,10 +177,10 @@ app.post("/crearTicket", cors(), (req, res) => {
       aditionalFields: `{"Tipo de Requerimiento":"${req.body.tema}","Tema":"${req.body.subtema}","HELP TOPIC":"${req.body.helpTopic}","NIVEL":"${req.body.nivel}","MODALIDAD": "${req.body.modalidad}","adjunto": "${req.body.urlPruebas}"}`,
     },
   };
-  request(enviado, function (error, response) {
+  request(enviado, function (error, response1) {
     if (error) throw new Error(error);
-    console.log(response.body);
-    guardado.push(response.body);
+    console.log(response1.body);
+    devolver = response1.body;
   });
 
   var actualizado = {
@@ -200,13 +200,12 @@ app.post("/crearTicket", cors(), (req, res) => {
       },
     },
   };
-  request(actualizado, function (error, response) {
+  request(actualizado, function (error, response2) {
     if (error) throw new Error(error);
-    console.log(response.body);
-    guardado.push(response.body);
+    console.log(response2.body);
   });
 
-  res.send(guardado);
+  res.send(devolver);
 });
 
 //Puerto del servidor
