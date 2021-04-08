@@ -175,6 +175,14 @@ app.post("/crearTicket", cors(), (req, res) => {
     },
   };
 
+  request(enviado, function (error, response1) {
+    if (error) throw new Error(error);
+    console.log(response1.body);
+    res.send(response1);
+  });
+});
+
+app.put("/actualizarEmailTicket", cors(), (req, res) => {
   var actualizado = {
     method: "PUT",
     url: "https://crm.ipdialbox.com/server/API/update.php",
@@ -191,16 +199,10 @@ app.post("/crearTicket", cors(), (req, res) => {
       },
     },
   };
-
-  request(enviado, function (error, response1) {
-    if (error) throw new Error(error);
-    console.log(response1.body);
-    res.send(response1);
-  });
-
   request(actualizado, function (error, response2) {
     if (error) throw new Error(error);
     console.log(response2.body);
+    res.send(response2);
   });
 });
 
