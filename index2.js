@@ -182,14 +182,15 @@ app.post("/crearTicket", cors(), (req, res) => {
   });
 });
 
-app.put("/actualizarEmailTicket", cors(), (req, res) => {
-  var actualizado = {
+app.post("/actualizarEmailTicket", cors(), (req, res) => {
+  var options = {
     method: "PUT",
     url: "https://crm.ipdialbox.com/server/API/update.php",
     headers: {
-      Cookie: "PHPSESSID=cr56h8n1cphnq7h7nbmqd1taj4",
+      "Content-Type": "application/json",
+      Cookie: "PHPSESSID=bv9hspr6l14n6hk1rl5p0fka20",
     },
-    formData: {
+    body: JSON.stringify({
       nit: "uees",
       token: "UJkcTGEuM9GXXjKWrD3geQ8sn75JnDk5",
       modulo: "contacts",
@@ -197,12 +198,12 @@ app.put("/actualizarEmailTicket", cors(), (req, res) => {
       datos: {
         emailcontact: req.body.correoEstudiantil,
       },
-    },
+    }),
   };
-  request(actualizado, function (error, response2) {
+  request(options, function (error, response) {
     if (error) throw new Error(error);
-    console.log(response2.body);
-    res.send(response2);
+    console.log(response.body);
+    res.send(response);
   });
 });
 
