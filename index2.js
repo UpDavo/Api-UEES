@@ -154,7 +154,6 @@ app.get("/consultarTicket/:ticket", cors(), (req, res) => {
 });
 
 app.post("/crearTicket", cors(), (req, res) => {
-  
   var enviado = {
     method: "POST",
     url: "https://crm.ipdialbox.com/server/API/cases/insert.php",
@@ -175,34 +174,34 @@ app.post("/crearTicket", cors(), (req, res) => {
       aditionalFields: `{"Tipo de Requerimiento":"${req.body.tema}","Tema":"${req.body.subtema}","HELP TOPIC":"${req.body.helpTopic}","NIVEL":"${req.body.nivel}","MODALIDAD": "${req.body.modalidad}","Correo estudiante": "${req.body.correoEstudiantil}","adjunto": "${req.body.urlPruebas}"}`,
     },
   };
+
+  var actualizado = {
+    method: "PUT",
+    url: "https://crm.ipdialbox.com/server/API/update.php",
+    headers: {
+      Cookie: "PHPSESSID=cr56h8n1cphnq7h7nbmqd1taj4",
+    },
+    formData: {
+      nit: "uees",
+      token: "UJkcTGEuM9GXXjKWrD3geQ8sn75JnDk5",
+      modulo: "contacts",
+      wolkvox_id: "606b11ba552ad80cba3a9642",
+      datos: {
+        emailcontact: req.body.correoEstudiantil,
+      },
+    },
+  };
+
   request(enviado, function (error, response1) {
     if (error) throw new Error(error);
     console.log(response1.body);
     res.send(response1);
   });
 
-  // var actualizado = {
-  //   method: "PUT",
-  //   url: "https://crm.ipdialbox.com/server/API/update.php",
-  //   headers: {
-  //     Cookie: "PHPSESSID=cr56h8n1cphnq7h7nbmqd1taj4",
-  //   },
-  //   formData: {
-  //     nit: "uees",
-  //     token: "UJkcTGEuM9GXXjKWrD3geQ8sn75JnDk5",
-  //     modulo: "contacts",
-  //     wolkvox_id: "606b11ba552ad80cba3a9642",
-  //     datos: {
-  //       emailcontact: req.body.correoEstudiantil,
-  //     },
-  //   },
-  // };
-  // request(actualizado, function (error, response2) {
-  //   if (error) throw new Error(error);
-  //   console.log(response2.body);
-  // });
-
-  
+  request(actualizado, function (error, response2) {
+    if (error) throw new Error(error);
+    console.log(response2.body);
+  });
 });
 
 //Puerto del servidor
