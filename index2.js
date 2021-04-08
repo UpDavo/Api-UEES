@@ -158,7 +158,6 @@ app.post("/crearTicket", cors(), (req, res) => {
 
   var enviado = {
     method: "POST",
-    proxy: process.env.QUOTAGUARDSTATIC_URL,
     url: "https://crm.ipdialbox.com/server/API/cases/insert.php",
     headers: {
       Cookie: "PHPSESSID=cqmbn9iajl6gcnjic33dpc7dkp",
@@ -183,27 +182,26 @@ app.post("/crearTicket", cors(), (req, res) => {
     devolver = response1.body;
   });
 
-  var actualizado = {
-    method: "PUT",
-    proxy: process.env.QUOTAGUARDSTATIC_URL,
-    url: "https://crm.ipdialbox.com/server/API/update.php",
-    headers: {
-      Cookie: "PHPSESSID=cr56h8n1cphnq7h7nbmqd1taj4",
-    },
-    formData: {
-      nit: "uees",
-      token: "UJkcTGEuM9GXXjKWrD3geQ8sn75JnDk5",
-      modulo: "contacts",
-      wolkvox_id: "606b11ba552ad80cba3a9642",
-      datos: {
-        emailcontact: req.body.correoEstudiantil,
-      },
-    },
-  };
-  request(actualizado, function (error, response2) {
-    if (error) throw new Error(error);
-    console.log(response2.body);
-  });
+  // var actualizado = {
+  //   method: "PUT",
+  //   url: "https://crm.ipdialbox.com/server/API/update.php",
+  //   headers: {
+  //     Cookie: "PHPSESSID=cr56h8n1cphnq7h7nbmqd1taj4",
+  //   },
+  //   formData: {
+  //     nit: "uees",
+  //     token: "UJkcTGEuM9GXXjKWrD3geQ8sn75JnDk5",
+  //     modulo: "contacts",
+  //     wolkvox_id: "606b11ba552ad80cba3a9642",
+  //     datos: {
+  //       emailcontact: req.body.correoEstudiantil,
+  //     },
+  //   },
+  // };
+  // request(actualizado, function (error, response2) {
+  //   if (error) throw new Error(error);
+  //   console.log(response2.body);
+  // });
 
   res.send(devolver);
 });
