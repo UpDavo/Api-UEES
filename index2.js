@@ -154,8 +154,7 @@ app.get("/consultarTicket/:ticket", cors(), (req, res) => {
 });
 
 app.post("/crearTicket", cors(), (req, res) => {
-  var devolver;
-
+  
   var enviado = {
     method: "POST",
     url: "https://crm.ipdialbox.com/server/API/cases/insert.php",
@@ -179,7 +178,7 @@ app.post("/crearTicket", cors(), (req, res) => {
   request(enviado, function (error, response1) {
     if (error) throw new Error(error);
     console.log(response1.body);
-    devolver = response1.body;
+    res.send(response1);
   });
 
   // var actualizado = {
@@ -203,7 +202,7 @@ app.post("/crearTicket", cors(), (req, res) => {
   //   console.log(response2.body);
   // });
 
-  res.send(devolver);
+  
 });
 
 //Puerto del servidor
