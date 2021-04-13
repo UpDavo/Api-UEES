@@ -171,7 +171,7 @@ app.post("/crearTicket", cors(), (req, res) => {
       status: "Abierto",
       priority: "baja",
       solution: "",
-      aditionalFields: `{"Tipo de Requerimiento":"${req.body.tema}","Tema":"${req.body.subtema}","HELP TOPIC":"${req.body.helpTopic}","NIVEL":"${req.body.nivel}","MODALIDAD": "${req.body.modalidad}","Correo estudiante": "${req.body.correoEstudiantil}","adjunto": "${req.body.urlPruebas}"}`,
+      aditionalFields: `{"Tipo de Requerimiento":"${req.body.tema}","Tema":"${req.body.subtema}","HELP TOPIC":"${req.body.helpTopic}","NIVEL":"${req.body.nivel}","MODALIDAD": "${req.body.modalidad}","Correo estudiante": "${req.body.correoEstudiantil}","adjunto": "${req.body.urlPruebas}","Estudiante": {"value":"${req.body.correoEstudiantil}","value_id":"${req.body.wolkvox_id}"}}`,
     },
   };
 
