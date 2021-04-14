@@ -428,17 +428,28 @@ function asignarGrupo(nivel, modalidad, carrera, tema, subtema) {
       });
     }
   } else {
-    for (const propiedad in grupos) {
-      grupos[propiedad].carrera.forEach((carrerasObjeto) => {
+    if (tema == "Financiero") {
+      for (const propiedad in grupos) {
         if (
-          carrera == carrerasObjeto &&
           nivel == grupos[propiedad].nivel &&
-          modalidad == grupos[propiedad].modalidad &&
-          tema == grupos[propiedad].tema
+          modalidad == grupos[propiedad].modalidad
         ) {
           dataReturn = grupos[propiedad];
         }
-      });
+      }
+    } else {
+      for (const propiedad in grupos) {
+        grupos[propiedad].carrera.forEach((carrerasObjeto) => {
+          if (
+            carrera == carrerasObjeto &&
+            nivel == grupos[propiedad].nivel &&
+            modalidad == grupos[propiedad].modalidad &&
+            tema == grupos[propiedad].tema
+          ) {
+            dataReturn = grupos[propiedad];
+          }
+        });
+      }
     }
   }
   return dataReturn;
