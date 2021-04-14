@@ -431,6 +431,7 @@ function asignarGrupo(nivel, modalidad, carrera, tema, subtema) {
     if (tema == "Financiero") {
       for (const propiedad in grupos) {
         if (
+          tema == grupos[propiedad].tema &&
           nivel == grupos[propiedad].nivel &&
           modalidad == grupos[propiedad].modalidad
         ) {
