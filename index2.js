@@ -618,13 +618,9 @@ app.post("/crearTicket", cors(), (req, res) => {
       token: "UJkcTGEuM9GXXjKWrD3geQ8sn75JnDk5",
       type: "Request",
       responsible:
-        grupoAsignado == "undefined"
-          ? "agent_12520@uees"
-          : grupoAsignado.usuario,
+        grupoAsignado == undefined ? "agent_12520@uees" : grupoAsignado.usuario,
       owner:
-        grupoAsignado == "undefined"
-          ? "agent_12520@uees"
-          : grupoAsignado.usuario,
+        grupoAsignado == undefined ? "agent_12520@uees" : grupoAsignado.usuario,
       contact: req.body.correoEstudiantil,
       description: req.body.comentario,
       status: "Abierto",
