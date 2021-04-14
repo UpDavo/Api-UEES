@@ -418,12 +418,12 @@ const tecnologia = {
 };
 
 function asignarGrupo(nivel, modalidad, carrera, tema, subtema) {
+  let dataReturn;
   if (tema == "Tecnológico") {
     for (const propiedad in tecnologia) {
       tecnologia[propiedad].subtema.forEach((subtemasObjeto) => {
         if (subtema == subtemasObjeto) {
-          console.log(tecnologia[propiedad]);
-          return tecnologia[propiedad];
+          dataReturn = tecnologia[propiedad];
         }
       });
     }
@@ -436,12 +436,13 @@ function asignarGrupo(nivel, modalidad, carrera, tema, subtema) {
           modalidad == grupos[propiedad].modalidad &&
           tema == grupos[propiedad].tema
         ) {
-          console.log(grupos[propiedad]);
-          return grupos[propiedad];
+          dataReturn = grupos[propiedad];
         }
       });
     }
   }
+  console.log(dataReturn);
+  return dataReturn;
 }
 
 const app = express();
