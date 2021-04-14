@@ -441,7 +441,6 @@ function asignarGrupo(nivel, modalidad, carrera, tema, subtema) {
       });
     }
   }
-  console.log(dataReturn);
   return dataReturn;
 }
 
