@@ -55,13 +55,10 @@ const grupos = {
   },
   grupo6: {
     tema: "Administrativo",
-    usuario: "agent_12429@uees",
+    usuario: "agent_12431@uees",
     nivel: "POSTGRADO",
     modalidad: "PRESENCIAL",
-    carrera: [
-      "MAESTRIA EN AUDITORIA DE TECNOLOGIAS DE LA INFORMACION",
-      "MAESTRIA EN SEGURIDAD Y SALUD OCUPACIONAL",
-    ],
+    carrera: ["MAESTRIA EN SEGURIDAD Y SALUD OCUPACIONAL"],
   },
   grupo7: {
     tema: "Administrativo",
@@ -71,6 +68,7 @@ const grupos = {
     carrera: [
       "MAESTRIA EN CONTABILIDAD Y FINANZAS",
       "MAESTRIA EN ADMINISTRACION PUBLICA",
+      "MAESTRIA EN AUDITORIA DE TECNOLOGIAS DE LA INFORMACION",
     ],
   },
   grupo8: {
