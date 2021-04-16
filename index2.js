@@ -38,7 +38,7 @@ const grupos = {
   },
   grupo4: {
     tema: "Administrativo",
-    usuario: ["agent_12432@uees", "agent_12427@uees"],
+    usuario: ["agent_12432@uees"],
     nivel: "POSTGRADO",
     modalidad: "PRESENCIAL",
     carrera: [
@@ -76,7 +76,7 @@ const grupos = {
   },
   grupo8: {
     tema: "Administrativo",
-    usuario: ["agent_12427@uees"],
+    usuario: ["agent_12427@uees", "agent_12432@uees"],
     nivel: "POSTGRADO",
     modalidad: "PRESENCIAL",
     carrera: [

@@ -22,7 +22,7 @@ const grupos = {
   },
   grupo4: {
     tema: "Administrativo",
-    usuario: ["agent_12432@uees", "agent_12427@uees"],
+    usuario: ["agent_12432@uees"],
     nivel: "POSTGRADO",
     modalidad: "PRESENCIAL",
     carrera: [
@@ -60,7 +60,7 @@ const grupos = {
   },
   grupo8: {
     tema: "Administrativo",
-    usuario: ["agent_12427@uees"],
+    usuario: ["agent_12427@uees", "agent_12432@uees"],
     nivel: "POSTGRADO",
     modalidad: "PRESENCIAL",
     carrera: [
@@ -260,6 +260,7 @@ const grupos = {
       "MAESTRIA EN GESTION ESTRATEGICA DE LA COMUNICACIÓN ORGANIZACIONAL",
       "MAESTRIA EN GESTION COMERCIAL Y RELACIONES CON LOS CLIENTES",
       "MAESTRIA EN MARKETING DIGITAL",
+      "MAESTRIA EN CONTABILIDAD Y FINANZAS",
     ],
   },
   grupo19: {
@@ -278,7 +279,6 @@ const grupos = {
       "MAESTRIA EN CONTABILIDAD Y FINANZAS",
       "MAESTRIA EN GESTION DEL TALENTO HUMANO",
       "MAESTRIA EN ADMINISTRACION PUBLICA",
-      "MAESTRIA EN SEGURIDAD Y SALUD OCUPACIONAL",
     ],
   },
   grupo21: {
@@ -387,6 +387,66 @@ const grupos = {
       "INGENIERIA EN CIENCIAS GASTRONOMICAS",
     ],
   },
+  grupo27: {
+    tema: "Académico",
+    usuario: ["agent_12924@uees"],
+    nivel: "GRADO",
+    modalidad: "DISTANCIA",
+    carrera: [
+      "ABOGADO DE LOS TRIBUNALES Y JUZGADOS DE LA REPUBLICA",
+      "CONTADOR PUBLICO AUTORIZADO",
+      "INGENIERIA EN CIENCIAS DE LA COMPUTACION",
+      "INGENIERIA EN CIENCIAS EMPRESARIALES",
+      "INGENIERIA EN MARKETING Y PUBLICIDAD",
+      "INGENIERIA EN SISTEMAS DE INFORMACION GERENCIAL",
+      "LICENCIATURA EN ADMINISTRACION DE EMPRESAS",
+      "LICENCIATURA EN COMERCIO EXTERIOR",
+      "LICENCIATURA EN COMUNICACION",
+      "LICENCIATURA EN COMUNICACION CORPORATIVA",
+      "LICENCIATURA EN CONTADURIA PUBLICA AUTORIZADA",
+      "LICENCIATURA EN MARKETING",
+      "LICENCIATURA EN NUTRICION Y DIETETICA",
+      "LICENCIATURA EN PSICOLOGIA",
+      "LICENCIATURA EN PSICOLOGIA ITINERARIO ORGANIZACIONAL",
+    ],
+  },
+  grupo28: {
+    tema: "Académico",
+    usuario: ["agent_12865@uees"],
+    nivel: "GRADO",
+    modalidad: "DISTANCIA",
+    carrera: ["LICENCIATURA EN CIENCIAS DE LA EDUCACION"],
+  },
+  grupo29: {
+    tema: "Administrativo",
+    usuario: ["agent_12924@uees"],
+    nivel: "GRADO",
+    modalidad: "DISTANCIA",
+    carrera: [
+      "ABOGADO DE LOS TRIBUNALES Y JUZGADOS DE LA REPUBLICA",
+      "CONTADOR PUBLICO AUTORIZADO",
+      "INGENIERIA EN CIENCIAS DE LA COMPUTACION",
+      "INGENIERIA EN CIENCIAS EMPRESARIALES",
+      "INGENIERIA EN MARKETING Y PUBLICIDAD",
+      "INGENIERIA EN SISTEMAS DE INFORMACION GERENCIAL",
+      "LICENCIATURA EN ADMINISTRACION DE EMPRESAS",
+      "LICENCIATURA EN COMERCIO EXTERIOR",
+      "LICENCIATURA EN COMUNICACION",
+      "LICENCIATURA EN COMUNICACION CORPORATIVA",
+      "LICENCIATURA EN CONTADURIA PUBLICA AUTORIZADA",
+      "LICENCIATURA EN MARKETING",
+      "LICENCIATURA EN NUTRICION Y DIETETICA",
+      "LICENCIATURA EN PSICOLOGIA",
+      "LICENCIATURA EN PSICOLOGIA ITINERARIO ORGANIZACIONAL",
+    ],
+  },
+  grupo30: {
+    tema: "Administrativo",
+    usuario: ["agent_12865@uees"],
+    nivel: "GRADO",
+    modalidad: "DISTANCIA",
+    carrera: ["LICENCIATURA EN CIENCIAS DE LA EDUCACION"],
+  },
 };
 
 const tecnologia = {
@@ -441,12 +501,17 @@ function asignarGrupo(nivel, modalidad, carrera, tema, subtema) {
   return dataReturn;
 }
 
-asignarGrupo(
+let grupoAsignado = asignarGrupo(
   "POSTGRADO",
   "PRESENCIAL",
-  "MAESTRIA EN DERECHO CONSTITUCIONAL",
-  "Académico",
-  "BLACKBOARD ULTRA"
+  "MAESTRIA EN ADMINISTRACION DE EMPRESAS",
+  "Administrativo",
+  "A"
 );
 
+console.log(
+  grupoAsignado.usuario[
+    Math.floor(Math.random() * grupoAsignado.usuario.length)
+  ]
+);
 //asignarGrupo(nivel, modalidad, carrera, tema, subtema)
