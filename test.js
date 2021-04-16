@@ -1,65 +1,66 @@
 const grupos = {
   grupo1: {
     tema: "Financiero",
-    usuario: "agent_12451@uees",
+    usuario: ["agent_12451@uees"],
     nivel: "GRADO",
     modalidad: "PRESENCIAL",
     carrera: [],
   },
   grupo2: {
     tema: "Financiero",
-    usuario: "agent_12434@uees",
+    usuario: ["agent_12434@uees"],
     nivel: "POSTGRADO",
     modalidad: "PRESENCIAL",
     carrera: [],
   },
   grupo3: {
     tema: "Financiero",
-    usuario: "agent_12433@uees",
+    usuario: ["agent_12433@uees"],
     nivel: "POSTGRADO",
     modalidad: "DISTANCIA",
     carrera: [],
   },
   grupo4: {
     tema: "Administrativo",
-    usuario: "agent_12432@uees",
+    usuario: ["agent_12432@uees", "agent_12427@uees"],
     nivel: "POSTGRADO",
     modalidad: "PRESENCIAL",
     carrera: [
       "MAESTRIA EN GESTION DEL TALENTO HUMANO",
       "MAESTRIA EN GESTION DE PROYECTOS",
+      "MAESTRIA EN MANAGEMENT ESTRATEGICO",
+      "MAESTRIA EN GESTION FINANCIERA Y RIESGO",
+      "MAESTRIA EN MARKETING DIGITAL",
     ],
   },
   grupo5: {
     tema: "Administrativo",
-    usuario: "agent_12430@uees",
+    usuario: ["agent_12430@uees"],
     nivel: "POSTGRADO",
     modalidad: "PRESENCIAL",
     carrera: ["MAESTRIA EN GESTION EDUCATIVA", "MAESTRIA EN EDUCACION"],
   },
   grupo6: {
     tema: "Administrativo",
-    usuario: "agent_12429@uees",
+    usuario: ["agent_12431@uees"],
     nivel: "POSTGRADO",
     modalidad: "PRESENCIAL",
-    carrera: [
-      "MAESTRIA EN AUDITORIA DE TECNOLOGIAS DE LA INFORMACION",
-      "MAESTRIA EN SEGURIDAD Y SALUD OCUPACIONAL",
-    ],
+    carrera: ["MAESTRIA EN SEGURIDAD Y SALUD OCUPACIONAL"],
   },
   grupo7: {
     tema: "Administrativo",
-    usuario: "agent_12428@uees",
+    usuario: ["agent_12428@uees"],
     nivel: "POSTGRADO",
     modalidad: "PRESENCIAL",
     carrera: [
       "MAESTRIA EN CONTABILIDAD Y FINANZAS",
       "MAESTRIA EN ADMINISTRACION PUBLICA",
+      "MAESTRIA EN AUDITORIA DE TECNOLOGIAS DE LA INFORMACION",
     ],
   },
   grupo8: {
     tema: "Administrativo",
-    usuario: "agent_12427@uees",
+    usuario: ["agent_12427@uees"],
     nivel: "POSTGRADO",
     modalidad: "PRESENCIAL",
     carrera: [
@@ -84,7 +85,7 @@ const grupos = {
   },
   grupo9: {
     tema: "Administrativo",
-    usuario: "agent_12426@uees",
+    usuario: ["agent_12426@uees"],
     nivel: "POSTGRADO",
     modalidad: "PRESENCIAL",
     carrera: [
@@ -95,7 +96,7 @@ const grupos = {
   },
   grupo10: {
     tema: "Administrativo",
-    usuario: "agent_12425@uees",
+    usuario: ["agent_12425@uees"],
     nivel: "POSTGRADO",
     modalidad: "PRESENCIAL",
     carrera: [
@@ -105,7 +106,7 @@ const grupos = {
   },
   grupo11: {
     tema: "Administrativo",
-    usuario: "agent_12424@uees",
+    usuario: ["agent_12424@uees"],
     nivel: "POSTGRADO",
     modalidad: "DISTANCIA",
     carrera: [
@@ -136,14 +137,14 @@ const grupos = {
   },
   grupo12: {
     tema: "Administrativo",
-    usuario: "agent_12708@uees",
+    usuario: ["agent_12708@uees"],
     nivel: "POSTGRADO",
     modalidad: "DISTANCIA",
     carrera: ["MAESTRIA EN GESTION EDUCATIVA", "MAESTRIA EN EDUCACION"],
   },
   grupo13: {
     tema: "Administrativo",
-    usuario: "agent_12450@uees",
+    usuario: ["agent_12450@uees"],
     nivel: "GRADO",
     modalidad: "PRESENCIAL",
     carrera: [
@@ -156,7 +157,7 @@ const grupos = {
   },
   grupo14: {
     tema: "Administrativo",
-    usuario: "agent_12410@uees",
+    usuario: ["agent_12410@uees"],
     nivel: "GRADO",
     modalidad: "PRESENCIAL",
     carrera: [
@@ -211,7 +212,7 @@ const grupos = {
   },
   grupo15: {
     tema: "Académico",
-    usuario: "agent_12423@uees",
+    usuario: ["agent_12423@uees"],
     nivel: "POSTGRADO",
     modalidad: "PRESENCIAL",
     carrera: [
@@ -224,21 +225,21 @@ const grupos = {
   },
   grupo16: {
     tema: "Académico",
-    usuario: "agent_12422@uees",
+    usuario: ["agent_12422@uees"],
     nivel: "POSTGRADO",
     modalidad: "PRESENCIAL",
     carrera: ["MAESTRIA EN GESTION DE PROYECTOS"],
   },
   grupo17: {
     tema: "Académico",
-    usuario: "agent_12421@uees",
+    usuario: ["agent_12421@uees"],
     nivel: "POSTGRADO",
     modalidad: "PRESENCIAL",
     carrera: ["MAESTRIA EN AUDITORIA DE TECNOLOGIAS DE LA INFORMACION"],
   },
   grupo18: {
     tema: "Académico",
-    usuario: "agent_12421@uees",
+    usuario: ["agent_12421@uees"],
     nivel: "POSTGRADO",
     modalidad: "PRESENCIAL",
     carrera: [
@@ -263,14 +264,14 @@ const grupos = {
   },
   grupo19: {
     tema: "Académico",
-    usuario: "agent_12420@uees",
+    usuario: ["agent_12420@uees"],
     nivel: "POSTGRADO",
     modalidad: "PRESENCIAL",
     carrera: ["MAESTRIA EN GESTION EDUCATIVA", "MAESTRIA EN EDUCACION"],
   },
   grupo20: {
     tema: "Académico",
-    usuario: "agent_12420@uees",
+    usuario: ["agent_12420@uees"],
     nivel: "POSTGRADO",
     modalidad: "PRESENCIAL",
     carrera: [
@@ -282,7 +283,7 @@ const grupos = {
   },
   grupo21: {
     tema: "Académico",
-    usuario: "agent_12420@uees",
+    usuario: ["agent_12420@uees"],
     nivel: "POSTGRADO",
     modalidad: "DISTANCIA",
     carrera: [
@@ -313,14 +314,14 @@ const grupos = {
   },
   grupo22: {
     tema: "Académico",
-    usuario: "agent_12708@uees",
+    usuario: ["agent_12708@uees"],
     nivel: "POSTGRADO",
     modalidad: "DISTANCIA",
     carrera: ["MAESTRIA EN GESTION EDUCATIVA", "MAESTRIA EN EDUCACION"],
   },
   grupo23: {
     tema: "Académico",
-    usuario: "agent_12450@uees",
+    usuario: ["agent_12450@uees"],
     nivel: "GRADO",
     modalidad: "PRESENCIAL",
     carrera: [
@@ -333,7 +334,7 @@ const grupos = {
   },
   grupo24: {
     tema: "Académico",
-    usuario: "agent_12410@uees",
+    usuario: ["agent_12410@uees"],
     nivel: "GRADO",
     modalidad: "PRESENCIAL",
     carrera: [
@@ -391,41 +392,53 @@ const grupos = {
 const tecnologia = {
   grupo25: {
     tema: "Tecnológico",
-    usuario: "agent_12417@uees",
-    subtema: ["BLACKBOARD ULTRA", "COLLABORATE ULTRA", "SUMADI"],
+    usuario: ["agent_12417@uees"],
+    subtema: ["Blackboard Learn Ultra", "Collaborate Ultra", "Sumadi"],
   },
   grupo26: {
     tema: "Tecnológico",
-    usuario: "Pendiente",
-    subtema: ["CORREO INSTITUCIONAL", "PORTAL DE SERVICIOS"],
+    usuario: ["Pendiente"],
+    subtema: ["Correo Institucional", "Portal de Servicios"],
   },
 };
 
 function asignarGrupo(nivel, modalidad, carrera, tema, subtema) {
+  let dataReturn;
   if (tema == "Tecnológico") {
     for (const propiedad in tecnologia) {
       tecnologia[propiedad].subtema.forEach((subtemasObjeto) => {
         if (subtema == subtemasObjeto) {
-          console.log(tecnologia[propiedad]);
-          return tecnologia[propiedad];
+          dataReturn = tecnologia[propiedad];
         }
       });
     }
   } else {
-    for (const propiedad in grupos) {
-      grupos[propiedad].carrera.forEach((carrerasObjeto) => {
+    if (tema == "Financiero") {
+      for (const propiedad in grupos) {
         if (
-          carrera == carrerasObjeto &&
+          tema == grupos[propiedad].tema &&
           nivel == grupos[propiedad].nivel &&
-          modalidad == grupos[propiedad].modalidad &&
-          tema == grupos[propiedad].tema
+          modalidad == grupos[propiedad].modalidad
         ) {
-          console.log(grupos[propiedad]);
-          return grupos[propiedad];
+          dataReturn = grupos[propiedad];
         }
-      });
+      }
+    } else {
+      for (const propiedad in grupos) {
+        grupos[propiedad].carrera.forEach((carrerasObjeto) => {
+          if (
+            carrera == carrerasObjeto &&
+            nivel == grupos[propiedad].nivel &&
+            modalidad == grupos[propiedad].modalidad &&
+            tema == grupos[propiedad].tema
+          ) {
+            dataReturn = grupos[propiedad];
+          }
+        });
+      }
     }
   }
+  return dataReturn;
 }
 
 asignarGrupo(
