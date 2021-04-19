@@ -463,6 +463,13 @@ const grupos = {
     modalidad: "DISTANCIA",
     carrera: ["LICENCIATURA EN CIENCIAS DE LA EDUCACION"],
   },
+  grupo31: {
+    tema: "Académico",
+    usuario: ["agent_12879@uees"],
+    nivel: "POSTGRADO",
+    modalidad: "PRESENCIAL",
+    carrera: ["MAESTRIA EN SEGURIDAD Y SALUD OCUPACIONAL"],
+  },
 };
 
 const tecnologia = {

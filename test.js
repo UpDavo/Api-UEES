@@ -447,6 +447,13 @@ const grupos = {
     modalidad: "DISTANCIA",
     carrera: ["LICENCIATURA EN CIENCIAS DE LA EDUCACION"],
   },
+  grupo31: {
+    tema: "Académico",
+    usuario: ["agent_12879@uees"],
+    nivel: "POSTGRADO",
+    modalidad: "PRESENCIAL",
+    carrera: ["MAESTRIA EN SEGURIDAD Y SALUD OCUPACIONAL"],
+  },
 };
 
 const tecnologia = {
@@ -504,9 +511,8 @@ function asignarGrupo(nivel, modalidad, carrera, tema, subtema) {
 let grupoAsignado = asignarGrupo(
   "POSTGRADO",
   "PRESENCIAL",
-  "MAESTRIA EN ADMINISTRACION DE EMPRESAS",
-  "Administrativo",
-  "A"
+  "MAESTRIA EN SEGURIDAD Y SALUD OCUPACIONAL",
+  "Académico"
 );
 
 console.log(
