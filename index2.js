@@ -475,7 +475,7 @@ const grupos = {
 const tecnologia = {
   grupo25: {
     tema: "Tecnológico",
-    usuario: ["agent_12417@uees"],
+    usuario: ["agent_12417@uees", "agent_12985@uees"],
     subtema: ["Blackboard Learn Ultra", "Collaborate Ultra", "Sumadi"],
   },
   grupo26: {
