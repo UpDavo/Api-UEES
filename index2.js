@@ -470,6 +470,34 @@ const grupos = {
     modalidad: "PRESENCIAL",
     carrera: ["MAESTRIA EN SEGURIDAD Y SALUD OCUPACIONAL"],
   },
+  grupo32: {
+    tema: "Administrativo",
+    usuario: ["agent_12970@uees", "agent_12986@uees", "agent_12858@uees"],
+    nivel: "POSTGRADO",
+    modalidad: "PRESENCIAL",
+    carrera: [
+      "ESPECIALIZACION EN CIRUGIA GENERAL",
+      "ESPECIALIZACION EN MEDICINA CRITICA",
+      "ESPECIALIDAD EN MEDICINA INTERNA",
+      "ESPECIALISTA EN CARDIOLOGIA",
+      "ESPECIALIDAD EN MEDICINA INTERNA",
+      "ESPECIALIDAD EN ANESTESIOLOGIA",
+    ],
+  },
+  grupo33: {
+    tema: "Académico",
+    usuario: ["agent_12819@uees"],
+    nivel: "POSTGRADO",
+    modalidad: "PRESENCIAL",
+    carrera: [
+      "ESPECIALIZACION EN CIRUGIA GENERAL",
+      "ESPECIALIZACION EN MEDICINA CRITICA",
+      "ESPECIALIDAD EN MEDICINA INTERNA",
+      "ESPECIALISTA EN CARDIOLOGIA",
+      "ESPECIALIDAD EN MEDICINA INTERNA",
+      "ESPECIALIDAD EN ANESTESIOLOGIA",
+    ],
+  },
 };
 
 const tecnologia = {
