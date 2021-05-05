@@ -623,7 +623,171 @@ const medicina = {
     ],
     carrera: ["MEDICO"],
   },
+  grupo41: {
+    tema: "Académico",
+    usuario: ["agent_12774@uees"],
+    nivel: "GRADO",
+    modalidad: "PRESENCIAL",
+    subtema: [
+      "Mi docente no responde a mis mensajes",
+      "Tengo actividades entregadas sin calificar",
+      "Re-calificación de examen",
+      "Solicitud de asignación de tutor",
+      "Mi tutor no responde a mis mensajes",
+      "Tengo observaciones sobre mi tutor",
+      "Iniciar proceso de titulación",
+      "Cambiar tema de titulación",
+      "Cambiar forma de titulación",
+      "Asignación de revisores",
+      "Solicitud de sustentación anticipada",
+      "Otros",
+    ],
+    carrera: ["MEDICO"],
+  },
+  grupo42: {
+    tema: "Académico",
+    usuario: ["agent_12776@uees"],
+    nivel: "GRADO",
+    modalidad: "PRESENCIAL",
+    subtema: [
+      "Mi docente no responde a mis mensajes",
+      "Tengo actividades entregadas sin calificar",
+      "Re-calificación de examen",
+      "Solicitud de asignación de tutor",
+      "Mi tutor no responde a mis mensajes",
+      "Tengo observaciones sobre mi tutor",
+      "Iniciar proceso de titulación",
+      "Cambiar tema de titulación",
+      "Cambiar forma de titulación",
+      "Asignación de revisores",
+      "Solicitud de sustentación anticipada",
+      "Otros",
+    ],
+    carrera: ["LICENCIATURA EN NUTRICION Y DIETETICA"],
+  },
+  grupo43: {
+    tema: "Académico",
+    usuario: ["agent_12979@uees"],
+    nivel: "GRADO",
+    modalidad: "PRESENCIAL",
+    subtema: [
+      "Mi docente no responde a mis mensajes",
+      "Tengo actividades entregadas sin calificar",
+      "Re-calificación de examen",
+      "Solicitud de asignación de tutor",
+      "Mi tutor no responde a mis mensajes",
+      "Tengo observaciones sobre mi tutor",
+      "Iniciar proceso de titulación",
+      "Cambiar tema de titulación",
+      "Cambiar forma de titulación",
+      "Asignación de revisores",
+      "Solicitud de sustentación anticipada",
+      "Otros",
+    ],
+    carrera: ["ODONTOLOGIA"],
+  },
+  grupo44: {
+    tema: "Académico",
+    usuario: ["agent_12979@uees"],
+    nivel: "GRADO",
+    modalidad: "PRESENCIAL",
+    subtema: [
+      "Mi docente no responde a mis mensajes",
+      "Tengo actividades entregadas sin calificar",
+      "Re-calificación de examen",
+      "Solicitud de asignación de tutor",
+      "Mi tutor no responde a mis mensajes",
+      "Tengo observaciones sobre mi tutor",
+      "Iniciar proceso de titulación",
+      "Cambiar tema de titulación",
+      "Cambiar forma de titulación",
+      "Asignación de revisores",
+      "Solicitud de sustentación anticipada",
+      "Otros",
+    ],
+    carrera: ["ENFERMERIA"],
+  },
+  grupo45: {
+    tema: "Académico",
+    usuario: ["agent_12450@uees"],
+    nivel: "GRADO",
+    modalidad: "PRESENCIAL",
+    subtema: [
+      "No se ha publicado el contenido de mi asignatura",
+      "Actividades no disponible en mi asignatura",
+      "Exámenes no disponible en mi asignatura",
+      "No está cargado el Syllabus de mi asignatura",
+    ],
+    carrera: [
+      "MEDICO",
+      "LICENCIATURA EN NUTRICION Y DIETETICA",
+      "ODONTOLOGIA",
+      "ENFERMERIA",
+    ],
+  },
 };
+
+function asignarGrupo(nivel, modalidad, carrera, tema, subtema) {
+  let dataReturn;
+
+  if (carrerasMedicina.indexOf(carrera) != -1) {
+    for (const propiedad in medicina) {
+      if (
+        carrera ==
+          medicina[propiedad].carrera[
+            medicina[propiedad].carrera.indexOf(carrera)
+          ] &&
+        nivel == medicina[propiedad].nivel &&
+        modalidad == medicina[propiedad].modalidad &&
+        tema == medicina[propiedad].tema &&
+        subtema ==
+          medicina[propiedad].subtema[
+            medicina[propiedad].subtema.indexOf(subtema)
+          ]
+      ) {
+        dataReturn = medicina[propiedad];
+      }
+    }
+  } else {
+    if (tema == "Tecnológico") {
+      for (const propiedad in tecnologia) {
+        tecnologia[propiedad].subtema.forEach((subtemasObjeto) => {
+          if (subtema == subtemasObjeto) {
+            dataReturn = tecnologia[propiedad];
+          }
+        });
+      }
+    } else {
+      if (tema == "Financiero") {
+        for (const propiedad in grupos) {
+          if (
+            tema == grupos[propiedad].tema &&
+            nivel == grupos[propiedad].nivel &&
+            modalidad == grupos[propiedad].modalidad
+          ) {
+            dataReturn = grupos[propiedad];
+          }
+        }
+      } else {
+        for (const propiedad in grupos) {
+          if (
+            carrera ==
+              grupos[propiedad].carrera[
+                grupos[propiedad].carrera.indexOf(carrera)
+              ] &&
+            nivel == grupos[propiedad].nivel &&
+            modalidad == grupos[propiedad].modalidad &&
+            tema == grupos[propiedad].tema
+          ) {
+            dataReturn = grupos[propiedad];
+          }
+        }
+      }
+    }
+  }
+
+  return dataReturn;
+}
 
 function asignarGrupo(nivel, modalidad, carrera, tema, subtema) {
   let dataReturn;
