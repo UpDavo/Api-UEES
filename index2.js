@@ -14,6 +14,13 @@ const httpsAgent = new https.Agent({
 const APIWOLKBOX = "https://34.86.151.171/ipdialbox/api_campaing.php";
 const TOKEN = "7b69645f6469737472697d2d3230323031313234313531363039";
 
+const carrerasMedicina = [
+  "ENFERMERIA",
+  "ODONTOLOGIA",
+  "LICENCIATURA EN NUTRICION Y DIETETICA",
+  "MEDICO",
+];
+
 const grupos = {
   grupo1: {
     tema: "Financiero",
@@ -513,42 +520,170 @@ const tecnologia = {
   },
 };
 
+const medicina = {
+  grupo34: {
+    tema: "Administrativo",
+    usuario: ["agent_12776@uees"],
+    nivel: "GRADO",
+    modalidad: "PRESENCIAL",
+    subtema: [
+      "Necesito tomar nuevamente una materia reprobada",
+      "Cambio de programa",
+      "Cambio de modalidad",
+      "Suspensión total o temporal de estudios",
+      "Solicitudes a consejo directivo",
+      "Otros",
+    ],
+    carrera: ["LICENCIATURA EN NUTRICION Y DIETETICA"],
+  },
+  grupo35: {
+    tema: "Administrativo",
+    usuario: ["agent_12979@uees"],
+    nivel: "GRADO",
+    modalidad: "PRESENCIAL",
+    subtema: ["Requiero nota de examen de ubicación de inglés"],
+    carrera: [
+      "MEDICO",
+      "LICENCIATURA EN NUTRICION Y DIETETICA",
+      "ODONTOLOGIA",
+      "ENFERMERIA",
+    ],
+  },
+  grupo36: {
+    tema: "Administrativo",
+    usuario: ["agent_12773@uees"],
+    nivel: "GRADO",
+    modalidad: "PRESENCIAL",
+    subtema: [
+      "Necesito tomar nuevamente una materia reprobada",
+      "Cambio de programa",
+      "Cambio de modalidad",
+      "Suspensión total o temporal de estudios",
+      "Solicitudes a consejo directivo",
+      "Otros",
+    ],
+    carrera: ["ODONTOLOGIA"],
+  },
+  grupo37: {
+    tema: "Administrativo",
+    usuario: ["agent_12772@uees"],
+    nivel: "GRADO",
+    modalidad: "PRESENCIAL",
+    subtema: [
+      "Necesito tomar nuevamente una materia reprobada",
+      "Cambio de programa",
+      "Cambio de modalidad",
+      "Suspensión total o temporal de estudios",
+      "Solicitudes a consejo directivo",
+      "Otros",
+    ],
+    carrera: ["ENFERMERIA"],
+  },
+  grupo38: {
+    tema: "Administrativo",
+    usuario: ["agent_12450@uees"],
+    nivel: "GRADO",
+    modalidad: "PRESENCIAL",
+    subtema: [
+      "No tengo acceso a la materia",
+      "Mi nota no está registrado en el portal de servicios",
+    ],
+    carrera: [
+      "ENFERMERIA",
+      "ODONTOLOGIA",
+      "LICENCIATURA EN NUTRICION Y DIETETICA",
+      "MEDICO",
+    ],
+  },
+  grupo39: {
+    tema: "Administrativo",
+    usuario: ["agent_12980@uees"],
+    nivel: "GRADO",
+    modalidad: "PRESENCIAL",
+    subtema: ["Requiero un certificado de estudios"],
+    carrera: [
+      "ENFERMERIA",
+      "ODONTOLOGIA",
+      "LICENCIATURA EN NUTRICION Y DIETETICA",
+      "MEDICO",
+    ],
+  },
+  grupo40: {
+    tema: "Administrativo",
+    usuario: ["agent_12774@uees"],
+    nivel: "GRADO",
+    modalidad: "PRESENCIAL",
+    subtema: [
+      "Necesito tomar nuevamente una materia reprobada",
+      "Cambio de programa",
+      "Cambio de modalidad",
+      "Suspensión total o temporal de estudios",
+      "Solicitudes a consejo directivo",
+      "Otros",
+    ],
+    carrera: ["MEDICO"],
+  },
+};
+
 function asignarGrupo(nivel, modalidad, carrera, tema, subtema) {
   let dataReturn;
-  if (tema == "Tecnológico") {
-    for (const propiedad in tecnologia) {
-      tecnologia[propiedad].subtema.forEach((subtemasObjeto) => {
-        if (subtema == subtemasObjeto) {
-          dataReturn = tecnologia[propiedad];
-        }
-      });
+
+  if (carrerasMedicina.indexOf(carrera) != -1) {
+    for (const propiedad in medicina) {
+      if (
+        carrera ==
+          medicina[propiedad].carrera[
+            medicina[propiedad].carrera.indexOf(carrera)
+          ] &&
+        nivel == medicina[propiedad].nivel &&
+        modalidad == medicina[propiedad].modalidad &&
+        tema == medicina[propiedad].tema &&
+        subtema ==
+          medicina[propiedad].subtema[
+            medicina[propiedad].subtema.indexOf(subtema)
+          ]
+      ) {
+        dataReturn = medicina[propiedad];
+      }
     }
   } else {
-    if (tema == "Financiero") {
-      for (const propiedad in grupos) {
-        if (
-          tema == grupos[propiedad].tema &&
-          nivel == grupos[propiedad].nivel &&
-          modalidad == grupos[propiedad].modalidad
-        ) {
-          dataReturn = grupos[propiedad];
-        }
+    if (tema == "Tecnológico") {
+      for (const propiedad in tecnologia) {
+        tecnologia[propiedad].subtema.forEach((subtemasObjeto) => {
+          if (subtema == subtemasObjeto) {
+            dataReturn = tecnologia[propiedad];
+          }
+        });
       }
     } else {
-      for (const propiedad in grupos) {
-        grupos[propiedad].carrera.forEach((carrerasObjeto) => {
+      if (tema == "Financiero") {
+        for (const propiedad in grupos) {
           if (
-            carrera == carrerasObjeto &&
+            tema == grupos[propiedad].tema &&
+            nivel == grupos[propiedad].nivel &&
+            modalidad == grupos[propiedad].modalidad
+          ) {
+            dataReturn = grupos[propiedad];
+          }
+        }
+      } else {
+        for (const propiedad in grupos) {
+          if (
+            carrera ==
+              grupos[propiedad].carrera[
+                grupos[propiedad].carrera.indexOf(carrera)
+              ] &&
             nivel == grupos[propiedad].nivel &&
             modalidad == grupos[propiedad].modalidad &&
             tema == grupos[propiedad].tema
           ) {
             dataReturn = grupos[propiedad];
           }
-        });
+        }
       }
     }
   }
+
   return dataReturn;
 }
 
