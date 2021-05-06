@@ -888,130 +888,6 @@ function asignarGrupo(nivel, modalidad, carrera, tema, subtema) {
   return dataReturn;
 }
 
-function asignarGrupo(nivel, modalidad, carrera, tema, subtema) {
-  let dataReturn;
-
-  if (carrerasMedicina.indexOf(carrera) != -1) {
-    for (const propiedad in medicina) {
-      if (
-        carrera ==
-          medicina[propiedad].carrera[
-            medicina[propiedad].carrera.indexOf(carrera)
-          ] &&
-        nivel == medicina[propiedad].nivel &&
-        modalidad == medicina[propiedad].modalidad &&
-        tema == medicina[propiedad].tema &&
-        subtema ==
-          medicina[propiedad].subtema[
-            medicina[propiedad].subtema.indexOf(subtema)
-          ]
-      ) {
-        dataReturn = medicina[propiedad];
-      }
-    }
-  } else {
-    if (tema == "Tecnológico") {
-      for (const propiedad in tecnologia) {
-        tecnologia[propiedad].subtema.forEach((subtemasObjeto) => {
-          if (subtema == subtemasObjeto) {
-            dataReturn = tecnologia[propiedad];
-          }
-        });
-      }
-    } else {
-      if (tema == "Financiero") {
-        for (const propiedad in grupos) {
-          if (
-            tema == grupos[propiedad].tema &&
-            nivel == grupos[propiedad].nivel &&
-            modalidad == grupos[propiedad].modalidad
-          ) {
-            dataReturn = grupos[propiedad];
-          }
-        }
-      } else {
-        for (const propiedad in grupos) {
-          if (
-            carrera ==
-              grupos[propiedad].carrera[
-                grupos[propiedad].carrera.indexOf(carrera)
-              ] &&
-            nivel == grupos[propiedad].nivel &&
-            modalidad == grupos[propiedad].modalidad &&
-            tema == grupos[propiedad].tema
-          ) {
-            dataReturn = grupos[propiedad];
-          }
-        }
-      }
-    }
-  }
-
-  return dataReturn;
-}
-
-function asignarGrupo(nivel, modalidad, carrera, tema, subtema) {
-  let dataReturn;
-
-  if (carrerasMedicina.indexOf(carrera) != -1) {
-    for (const propiedad in medicina) {
-      if (
-        carrera ==
-          medicina[propiedad].carrera[
-            medicina[propiedad].carrera.indexOf(carrera)
-          ] &&
-        nivel == medicina[propiedad].nivel &&
-        modalidad == medicina[propiedad].modalidad &&
-        tema == medicina[propiedad].tema &&
-        subtema ==
-          medicina[propiedad].subtema[
-            medicina[propiedad].subtema.indexOf(subtema)
-          ]
-      ) {
-        dataReturn = medicina[propiedad];
-      }
-    }
-  } else {
-    if (tema == "Tecnológico") {
-      for (const propiedad in tecnologia) {
-        tecnologia[propiedad].subtema.forEach((subtemasObjeto) => {
-          if (subtema == subtemasObjeto) {
-            dataReturn = tecnologia[propiedad];
-          }
-        });
-      }
-    } else {
-      if (tema == "Financiero") {
-        for (const propiedad in grupos) {
-          if (
-            tema == grupos[propiedad].tema &&
-            nivel == grupos[propiedad].nivel &&
-            modalidad == grupos[propiedad].modalidad
-          ) {
-            dataReturn = grupos[propiedad];
-          }
-        }
-      } else {
-        for (const propiedad in grupos) {
-          if (
-            carrera ==
-              grupos[propiedad].carrera[
-                grupos[propiedad].carrera.indexOf(carrera)
-              ] &&
-            nivel == grupos[propiedad].nivel &&
-            modalidad == grupos[propiedad].modalidad &&
-            tema == grupos[propiedad].tema
-          ) {
-            dataReturn = grupos[propiedad];
-          }
-        }
-      }
-    }
-  }
-
-  return dataReturn;
-}
-
 const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -1198,6 +1074,7 @@ app.post("/crearTicket", cors(), (req, res) => {
 
   request(enviado, function (error, response) {
     if (error) throw new Error(error);
+    response.body.correo = grupoAsignado.correoWolkvox;
     console.log(response.body);
     res.send(response);
   });
