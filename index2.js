@@ -1078,15 +1078,15 @@ app.post("/crearTicket", cors(), (req, res) => {
     if (error) throw new Error(error);
     dataParseada = JSON.parse(response.body);
     dataFinal = {
-      body: {
+      body: JSON.stringify({
         result: dataParseada.result,
         wolkvox_id: dataParseada.wolkvox_id,
         idPrefijo: dataParseada.idPrefijo,
         correoAsesor: grupoAsignado.correoWolkvox,
         usuarioAsesor: grupoAsignado.usuarioWolkvox,
-      },
+      }),
     };
-    console.log(JSON.stringify(dataFinal));
+    console.log(JSON.stringify(dataFinal.body));
     res.send(JSON.stringify(dataFinal));
   });
 });
