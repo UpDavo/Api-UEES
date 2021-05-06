@@ -1086,8 +1086,8 @@ app.post("/crearTicket", cors(), (req, res) => {
         usuarioAsesor: grupoAsignado.usuarioWolkvox,
       },
     };
-    console.log(dataFinal);
-    res.send(dataFinal);
+    console.log(JSON.stringify(dataFinal));
+    res.send(JSON.stringify(dataFinal));
   });
 });
 
