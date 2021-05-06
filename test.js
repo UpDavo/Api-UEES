@@ -5,6 +5,93 @@ const carrerasMedicina = [
   "MEDICO",
 ];
 
+const correosUsuarios = [
+  { usuarioWolkvox: "agent_12423@uees", correoWolkvox: "aquimiz@uees.edu.ec" },
+  {
+    usuarioWolkvox: "agent_12865@uees",
+    correoWolkvox: "apsalazar@uees.edu.ec",
+  },
+  { usuarioWolkvox: "agent_12776@uees", correoWolkvox: "aterana@uees.edu.ec" },
+  { usuarioWolkvox: "agent_12879@uees", correoWolkvox: "cariasu@uees.edu.ec" },
+  { usuarioWolkvox: "agent_12428@uees", correoWolkvox: "cbyepez@uees.edu.ec" },
+  { usuarioWolkvox: "agent_12708@uees", correoWolkvox: "dcruzm@uees.edu.ec" },
+  { usuarioWolkvox: "agent_12931@uees", correoWolkvox: "esaona@uees.edu.ec" },
+  {
+    usuarioWolkvox: "agent_12451@uees",
+    correoWolkvox: "ejandrade@uees.edu.ec",
+  },
+  {
+    usuarioWolkvox: "agent_12421@uees",
+    correoWolkvox: "fcobolanos@uees.edu.ec",
+  },
+  { usuarioWolkvox: "agent_12417@uees", correoWolkvox: "hquishpi@uees.edu.ec" },
+  { usuarioWolkvox: "agent_12979@uees", correoWolkvox: "isfierro@uees.edu.ec" },
+  { usuarioWolkvox: "agent_12410@uees", correoWolkvox: "jtorresm@uees.edu.ec" },
+  { usuarioWolkvox: "agent_12434@uees", correoWolkvox: "jmunoza@uees.edu.ec" },
+  { usuarioWolkvox: "agent_12425@uees", correoWolkvox: "jpmaruri@uees.edu.ec" },
+  { usuarioWolkvox: "agent_12924@uees", correoWolkvox: "jpvargas@uees.edu.ec" },
+  {
+    usuarioWolkvox: "agent_12427@uees",
+    correoWolkvox: "jcabrerar@uees.edu.ec",
+  },
+  {
+    usuarioWolkvox: "agent_12773@uees",
+    correoWolkvox: "jgallardob@uees.edu.ec",
+  },
+  {
+    usuarioWolkvox: "agent_12433@uees",
+    correoWolkvox: "kcolumbus@uees.edu.ec",
+  },
+  {
+    usuarioWolkvox: "agent_12431@uees",
+    correoWolkvox: "lespinozah@uees.edu.ec",
+  },
+  {
+    usuarioWolkvox: "agent_12858@uees",
+    correoWolkvox: "lsalazara@uees.edu.ec",
+  },
+  {
+    usuarioWolkvox: "agent_12420@uees",
+    correoWolkvox: "ldperezm49@uees.edu.ec",
+  },
+  {
+    usuarioWolkvox: "agent_12422@uees",
+    correoWolkvox: "marteagag@uees.edu.ec",
+  },
+  { usuarioWolkvox: "agent_12430@uees", correoWolkvox: "mjerraez@uees.edu.ec" },
+  {
+    usuarioWolkvox: "agent_12429@uees",
+    correoWolkvox: "mquintana@uees.edu.ec",
+  },
+  {
+    usuarioWolkvox: "agent_12819@uees",
+    correoWolkvox: "mireyarodas@uees.edu.ec",
+  },
+  { usuarioWolkvox: "agent_12970@uees", correoWolkvox: "ncercado@uees.edu.ec" },
+  { usuarioWolkvox: "agent_12985@uees", correoWolkvox: "omaluk@uees.edu.ec" },
+  { usuarioWolkvox: "agent_12774@uees", correoWolkvox: "diazmora@uees.edu.ec" },
+  {
+    usuarioWolkvox: "agent_12418@uees",
+    correoWolkvox: "rgavilanezf@uees.edu.ec",
+  },
+  {
+    usuarioWolkvox: "agent_12424@uees",
+    correoWolkvox: "rmontenegro@uees.edu.ec",
+  },
+  {
+    usuarioWolkvox: "agent_12772@uees",
+    correoWolkvox: "rvalverde@uees.edu.ec",
+  },
+  {
+    usuarioWolkvox: "agent_12450@uees",
+    correoWolkvox: "rmoralesh@uees.edu.ec",
+  },
+  { usuarioWolkvox: "agent_12986@uees", correoWolkvox: "szuritam@uees.edu.ec" },
+  { usuarioWolkvox: "agent_12980@uees", correoWolkvox: "sfraijo@uees.edu.ec" },
+  { usuarioWolkvox: "agent_12426@uees", correoWolkvox: "vbravov@uees.edu.ec" },
+  { usuarioWolkvox: "agent_12432@uees", correoWolkvox: "yseijas@uees.edu.ec" },
+];
+
 const grupos = {
   grupo1: {
     tema: "Financiero",
@@ -712,6 +799,7 @@ const medicina = {
 };
 
 function asignarGrupo(nivel, modalidad, carrera, tema, subtema) {
+  let user;
   let dataReturn;
 
   if (carrerasMedicina.indexOf(carrera) != -1) {
@@ -729,7 +817,7 @@ function asignarGrupo(nivel, modalidad, carrera, tema, subtema) {
             medicina[propiedad].subtema.indexOf(subtema)
           ]
       ) {
-        dataReturn = medicina[propiedad];
+        user = medicina[propiedad];
       }
     }
   } else {
@@ -737,7 +825,7 @@ function asignarGrupo(nivel, modalidad, carrera, tema, subtema) {
       for (const propiedad in tecnologia) {
         tecnologia[propiedad].subtema.forEach((subtemasObjeto) => {
           if (subtema == subtemasObjeto) {
-            dataReturn = tecnologia[propiedad];
+            user = tecnologia[propiedad];
           }
         });
       }
@@ -749,7 +837,7 @@ function asignarGrupo(nivel, modalidad, carrera, tema, subtema) {
             nivel == grupos[propiedad].nivel &&
             modalidad == grupos[propiedad].modalidad
           ) {
-            dataReturn = grupos[propiedad];
+            user = grupos[propiedad];
           }
         }
       } else {
@@ -763,10 +851,21 @@ function asignarGrupo(nivel, modalidad, carrera, tema, subtema) {
             modalidad == grupos[propiedad].modalidad &&
             tema == grupos[propiedad].tema
           ) {
-            dataReturn = grupos[propiedad];
+            user = grupos[propiedad];
           }
         }
       }
+    }
+  }
+
+  console.log(user);
+
+  let usuarioRandom =
+    user.usuario[Math.floor(Math.random() * user.usuario.length)];
+
+  for (const usuario in correosUsuarios) {
+    if (correosUsuarios[usuario].usuarioWolkvox == usuarioRandom) {
+      dataReturn = correosUsuarios[usuario];
     }
   }
 
@@ -774,16 +873,12 @@ function asignarGrupo(nivel, modalidad, carrera, tema, subtema) {
 }
 
 let grupoAsignado = asignarGrupo(
-  "GRADO",
+  "POSTGRADO",
   "PRESENCIAL",
-  "MEDICO",
-  "Académico",
+  "MAESTRIA EN ADMINISTRACION DE EMPRESAS",
+  "Administrativo",
   "Cambiar tema de titulación"
 );
 
-console.log(
-  grupoAsignado.usuario[
-    Math.floor(Math.random() * grupoAsignado.usuario.length)
-  ]
-);
+console.log(grupoAsignado.usuarioWolkvox + " " + grupoAsignado.correoWolkvox);
 //asignarGrupo(nivel, modalidad, carrera, tema, subtema)

@@ -21,6 +21,93 @@ const carrerasMedicina = [
   "MEDICO",
 ];
 
+const correosUsuarios = [
+  { usuarioWolkvox: "agent_12423@uees", correoWolkvox: "aquimiz@uees.edu.ec" },
+  {
+    usuarioWolkvox: "agent_12865@uees",
+    correoWolkvox: "apsalazar@uees.edu.ec",
+  },
+  { usuarioWolkvox: "agent_12776@uees", correoWolkvox: "aterana@uees.edu.ec" },
+  { usuarioWolkvox: "agent_12879@uees", correoWolkvox: "cariasu@uees.edu.ec" },
+  { usuarioWolkvox: "agent_12428@uees", correoWolkvox: "cbyepez@uees.edu.ec" },
+  { usuarioWolkvox: "agent_12708@uees", correoWolkvox: "dcruzm@uees.edu.ec" },
+  { usuarioWolkvox: "agent_12931@uees", correoWolkvox: "esaona@uees.edu.ec" },
+  {
+    usuarioWolkvox: "agent_12451@uees",
+    correoWolkvox: "ejandrade@uees.edu.ec",
+  },
+  {
+    usuarioWolkvox: "agent_12421@uees",
+    correoWolkvox: "fcobolanos@uees.edu.ec",
+  },
+  { usuarioWolkvox: "agent_12417@uees", correoWolkvox: "hquishpi@uees.edu.ec" },
+  { usuarioWolkvox: "agent_12979@uees", correoWolkvox: "isfierro@uees.edu.ec" },
+  { usuarioWolkvox: "agent_12410@uees", correoWolkvox: "jtorresm@uees.edu.ec" },
+  { usuarioWolkvox: "agent_12434@uees", correoWolkvox: "jmunoza@uees.edu.ec" },
+  { usuarioWolkvox: "agent_12425@uees", correoWolkvox: "jpmaruri@uees.edu.ec" },
+  { usuarioWolkvox: "agent_12924@uees", correoWolkvox: "jpvargas@uees.edu.ec" },
+  {
+    usuarioWolkvox: "agent_12427@uees",
+    correoWolkvox: "jcabrerar@uees.edu.ec",
+  },
+  {
+    usuarioWolkvox: "agent_12773@uees",
+    correoWolkvox: "jgallardob@uees.edu.ec",
+  },
+  {
+    usuarioWolkvox: "agent_12433@uees",
+    correoWolkvox: "kcolumbus@uees.edu.ec",
+  },
+  {
+    usuarioWolkvox: "agent_12431@uees",
+    correoWolkvox: "lespinozah@uees.edu.ec",
+  },
+  {
+    usuarioWolkvox: "agent_12858@uees",
+    correoWolkvox: "lsalazara@uees.edu.ec",
+  },
+  {
+    usuarioWolkvox: "agent_12420@uees",
+    correoWolkvox: "ldperezm49@uees.edu.ec",
+  },
+  {
+    usuarioWolkvox: "agent_12422@uees",
+    correoWolkvox: "marteagag@uees.edu.ec",
+  },
+  { usuarioWolkvox: "agent_12430@uees", correoWolkvox: "mjerraez@uees.edu.ec" },
+  {
+    usuarioWolkvox: "agent_12429@uees",
+    correoWolkvox: "mquintana@uees.edu.ec",
+  },
+  {
+    usuarioWolkvox: "agent_12819@uees",
+    correoWolkvox: "mireyarodas@uees.edu.ec",
+  },
+  { usuarioWolkvox: "agent_12970@uees", correoWolkvox: "ncercado@uees.edu.ec" },
+  { usuarioWolkvox: "agent_12985@uees", correoWolkvox: "omaluk@uees.edu.ec" },
+  { usuarioWolkvox: "agent_12774@uees", correoWolkvox: "diazmora@uees.edu.ec" },
+  {
+    usuarioWolkvox: "agent_12418@uees",
+    correoWolkvox: "rgavilanezf@uees.edu.ec",
+  },
+  {
+    usuarioWolkvox: "agent_12424@uees",
+    correoWolkvox: "rmontenegro@uees.edu.ec",
+  },
+  {
+    usuarioWolkvox: "agent_12772@uees",
+    correoWolkvox: "rvalverde@uees.edu.ec",
+  },
+  {
+    usuarioWolkvox: "agent_12450@uees",
+    correoWolkvox: "rmoralesh@uees.edu.ec",
+  },
+  { usuarioWolkvox: "agent_12986@uees", correoWolkvox: "szuritam@uees.edu.ec" },
+  { usuarioWolkvox: "agent_12980@uees", correoWolkvox: "sfraijo@uees.edu.ec" },
+  { usuarioWolkvox: "agent_12426@uees", correoWolkvox: "vbravov@uees.edu.ec" },
+  { usuarioWolkvox: "agent_12432@uees", correoWolkvox: "yseijas@uees.edu.ec" },
+];
+
 const grupos = {
   grupo1: {
     tema: "Financiero",
@@ -728,6 +815,80 @@ const medicina = {
 };
 
 function asignarGrupo(nivel, modalidad, carrera, tema, subtema) {
+  let user;
+  let dataReturn;
+
+  if (carrerasMedicina.indexOf(carrera) != -1) {
+    for (const propiedad in medicina) {
+      if (
+        carrera ==
+          medicina[propiedad].carrera[
+            medicina[propiedad].carrera.indexOf(carrera)
+          ] &&
+        nivel == medicina[propiedad].nivel &&
+        modalidad == medicina[propiedad].modalidad &&
+        tema == medicina[propiedad].tema &&
+        subtema ==
+          medicina[propiedad].subtema[
+            medicina[propiedad].subtema.indexOf(subtema)
+          ]
+      ) {
+        user = medicina[propiedad];
+      }
+    }
+  } else {
+    if (tema == "Tecnológico") {
+      for (const propiedad in tecnologia) {
+        tecnologia[propiedad].subtema.forEach((subtemasObjeto) => {
+          if (subtema == subtemasObjeto) {
+            user = tecnologia[propiedad];
+          }
+        });
+      }
+    } else {
+      if (tema == "Financiero") {
+        for (const propiedad in grupos) {
+          if (
+            tema == grupos[propiedad].tema &&
+            nivel == grupos[propiedad].nivel &&
+            modalidad == grupos[propiedad].modalidad
+          ) {
+            user = grupos[propiedad];
+          }
+        }
+      } else {
+        for (const propiedad in grupos) {
+          if (
+            carrera ==
+              grupos[propiedad].carrera[
+                grupos[propiedad].carrera.indexOf(carrera)
+              ] &&
+            nivel == grupos[propiedad].nivel &&
+            modalidad == grupos[propiedad].modalidad &&
+            tema == grupos[propiedad].tema
+          ) {
+            user = grupos[propiedad];
+          }
+        }
+      }
+    }
+  }
+
+  console.log(user);
+
+  let usuarioRandom =
+    user.usuario[Math.floor(Math.random() * user.usuario.length)];
+
+  for (const usuario in correosUsuarios) {
+    if (correosUsuarios[usuario].usuarioWolkvox == usuarioRandom) {
+      dataReturn = correosUsuarios[usuario];
+    }
+  }
+
+  return dataReturn;
+}
+
+function asignarGrupo(nivel, modalidad, carrera, tema, subtema) {
   let dataReturn;
 
   if (carrerasMedicina.indexOf(carrera) != -1) {
@@ -991,7 +1152,7 @@ app.get("/consultarTicket/:ticket", cors(), (req, res) => {
 });
 
 app.post("/crearTicket", cors(), (req, res) => {
-  let grupoAsignado = asignarGrupo(
+  var grupoAsignado = asignarGrupo(
     req.body.nivel,
     req.body.modalidad,
     req.body.carrera,
@@ -1012,18 +1173,8 @@ app.post("/crearTicket", cors(), (req, res) => {
       nit: "uees",
       token: "UJkcTGEuM9GXXjKWrD3geQ8sn75JnDk5",
       type: "Request",
-      responsible:
-        grupoAsignado == undefined
-          ? "agent_12520@uees"
-          : grupoAsignado.usuario[
-              Math.floor(Math.random() * grupoAsignado.usuario.length)
-            ],
-      owner:
-        grupoAsignado == undefined
-          ? "agent_12520@uees"
-          : grupoAsignado.usuario[
-              Math.floor(Math.random() * grupoAsignado.usuario.length)
-            ],
+      responsible: grupoAsignado.usuarioWolkvox,
+      owner: grupoAsignado.usuarioWolkvox,
       contact: req.body.correoEstudiantil,
       description: req.body.comentario,
       status: "Abierto",
@@ -1045,10 +1196,11 @@ app.post("/crearTicket", cors(), (req, res) => {
     },
   };
 
-  request(enviado, function (error, response1) {
+  request(enviado, function (error, response) {
     if (error) throw new Error(error);
-    console.log(response1.body);
-    res.send(response1);
+    response.body.correo = grupoAsignado.correoWolkvox;
+    console.log(response.body);
+    res.send(response);
   });
 });
 
