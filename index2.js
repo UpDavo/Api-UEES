@@ -1198,7 +1198,6 @@ app.post("/crearTicket", cors(), (req, res) => {
 
   request(enviado, function (error, response) {
     if (error) throw new Error(error);
-    response.body.correo = grupoAsignado.correoWolkvox;
     console.log(response.body);
     res.send(response);
   });
