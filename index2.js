@@ -1028,7 +1028,7 @@ app.get("/consultarTicket/:ticket", cors(), (req, res) => {
 });
 
 app.post("/crearTicket", cors(), (req, res) => {
-  var grupoAsignado = asignarGrupo(
+  const grupoAsignado = asignarGrupo(
     req.body.nivel,
     req.body.modalidad,
     req.body.carrera,
@@ -1073,8 +1073,17 @@ app.post("/crearTicket", cors(), (req, res) => {
   };
 
   request(enviado, function (error, response) {
+    let dataFinal;
+    let dataParseada;
     if (error) throw new Error(error);
-    response.body.correo = grupoAsignado.correoWolkvox;
+    dataParseada = JSON.parse(response.body);
+    dataFinal = {
+      result: dataParseada.result,
+      wolkvox_id: dataParseada.wolkvox_id,
+      idPrefijo: dataParseada.idPrefijo,
+      correoAsesor: grupoAsignado.correoWolkvox,
+      usuarioAsesor: grupoAsignado.usuarioWolkvox,
+    };
     console.log(response.body);
     res.send(response);
   });
