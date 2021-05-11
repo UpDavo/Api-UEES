@@ -1063,6 +1063,7 @@ app.post("/crearTicket", cors(), (req, res) => {
         "NIVEL":"${req.body.nivel}",
         "MODALIDAD": "${req.body.modalidad}",
         "Correo estudiante": "${req.body.correoEstudiantil}",
+        "Nombre del Estudiante": "${req.body.nombre}",
         "adjunto": "${req.body.urlPruebas}",
         "Estudiante": {
           "value":"${req.body.correoEstudiantil}",
