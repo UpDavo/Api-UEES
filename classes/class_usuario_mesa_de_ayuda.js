@@ -60,9 +60,16 @@ class UsuarioMesaDeAyuda {
             if (
               this.tema == mesaDeAyuda.data.grupos[propiedad].tema &&
               this.nivel == mesaDeAyuda.data.grupos[propiedad].nivel &&
-              this.modalidad == mesaDeAyuda.data.grupos[propiedad].modalidad
+              this.modalidad == mesaDeAyuda.data.grupos[propiedad].modalidad &&
+              this.subtema ==
+                mesaDeAyuda.data.grupos[propiedad].subtema[
+                  mesaDeAyuda.data.grupos[propiedad].subtema.indexOf(
+                    this.subtema
+                  )
+                ]
             ) {
               user = mesaDeAyuda.data.grupos[propiedad];
+              console.log("usuario de financiero creado" + user);
             }
           }
         } else {

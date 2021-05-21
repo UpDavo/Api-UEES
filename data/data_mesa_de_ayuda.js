@@ -150,13 +150,45 @@ exports.data = {
       modalidad: "PRESENCIAL",
       carrera: [],
     },
-    grupo2: {
+    grupo2a: {
+      tema: "Financiero",
+      usuario: [
+        "agent_12423@uees",
+        "agent_12428@uees",
+        "agent_12425@uees",
+        "agent_12431@uees",
+        "agent_12858@uees",
+        "agent_12986@uees",
+        "agent_12426@uees",
+        "agent_12432@uees",
+      ],
+      nivel: "POSTGRADO",
+      modalidad: "PRESENCIAL",
+      subtema: [
+        "Ingreso de pago de colegiatura, matricula e inscripción",
+        "No refleja tabla de pago en el portal de servicios",
+        "No se ha registrado mi pago",
+        "Examen de ubicación de inglés",
+        "Examen de recuperación",
+        "Pagar certificaciones",
+        "Pagar re-matrícula",
+        "Pagar otra materia",
+        "Otros",
+      ],
+      carrera: [],
+    },
+    grupo2b: {
       tema: "Financiero",
       usuario: ["agent_12434@uees"],
       nivel: "POSTGRADO",
       modalidad: "PRESENCIAL",
+      subtema: [
+        "No se ha gestionado mi reembolso",
+        "Notas de crédito (devoluciones) y becas",
+      ],
       carrera: [],
     },
+
     grupo3: {
       tema: "Financiero",
       usuario: ["agent_12433@uees"],
