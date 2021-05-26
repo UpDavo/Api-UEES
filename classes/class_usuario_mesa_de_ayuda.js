@@ -92,7 +92,7 @@ class UsuarioMesaDeAyuda {
       }
     }
 
-    console.log(usuarioRandom);
+    console.log(user);
     let usuarioRandom =
       user.usuario[Math.floor(Math.random() * user.usuario.length)];
 
