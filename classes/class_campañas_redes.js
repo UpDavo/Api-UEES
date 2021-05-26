@@ -76,18 +76,18 @@ class CampañaRedes {
     function callback(error, response, body) {
       if (!error && response.statusCode == 200) {
         //Imprime los parametros y el url
+
         console.log(
-          boxen(
-            `NUEVO INGRESO DE CAMPAÑA EN REDES - ${
-              req.body.interesado
-            }\n\nParametros:\n\n${JSON.stringify(
-              params
-            )}\n\nUrl integrado:\n\n${
-              url.href
-            }\n\nResultado:\n\n${JSON.stringify(body)}`,
-            { padding: 1 }
-          )
+          `NUEVO INGRESO DE CAMPAÑA EN REDES - ${req.body.interesado}`
         );
+        console.log("\nParametros:");
+        console.log(params);
+        console.log("\nUrl integrado:");
+        console.log(url.href);
+        console.log("\nResultado:");
+        console.log(body);
+
+        //Fin de los prints
 
         res.send(body);
       }

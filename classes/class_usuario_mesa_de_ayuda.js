@@ -92,6 +92,7 @@ class UsuarioMesaDeAyuda {
       }
     }
 
+    console.log(usuarioRandom);
     let usuarioRandom =
       user.usuario[Math.floor(Math.random() * user.usuario.length)];
 
@@ -162,15 +163,14 @@ class UsuarioMesaDeAyuda {
 
       //Imprime los parametros y el url
       console.log(
-        boxen(
-          `NUEVO INGRESO DE TICKET EN MESA DE AYUDA - ${
-            req.body.nombre
-          }\n\nGrupo Asignado:\n\n${JSON.stringify(
-            grupoAsignado
-          )}\n\nResultado:\n\n${JSON.stringify(dataFinal)}`,
-          { padding: 1 }
-        )
+        `\nNUEVO INGRESO DE TICKET EN MESA DE AYUDA - ${req.body.nombre}`
       );
+      console.log(`\nGrupo Asignado:`);
+      console.log(grupoAsignado);
+      console.log(`\nResultado:`);
+      console.log(dataFinal);
+
+      //Fin de los prints
       res.send(dataFinal);
     });
   }

@@ -24,14 +24,14 @@ class MesaDeAyuda {
     };
     request(options, function (error, response) {
       if (error) throw new Error(error);
+
       console.log(
-        boxen(
-          `NUEVO PETICION DE CONSULTA DE CORREO - ${
-            req.params.email
-          }\n\nResultado:\n\n${JSON.stringify(response.body)}`,
-          { padding: 1 }
-        )
+        `\nNUEVO PETICION DE CONSULTA DE CORREO - ${req.params.email}`
       );
+      console.log("\nResultado:");
+      console.log(response.body);
+
+      //Fin de los prints
 
       res.send(response.body);
     });
@@ -55,14 +55,14 @@ class MesaDeAyuda {
     };
     request(options, function (error, response) {
       if (error) throw new Error(error);
+
       console.log(
-        boxen(
-          `NUEVO PETICION DE CONSULTA DE TICKET - ${
-            req.params.ticket
-          }\n\nResultado:\n\n${JSON.stringify(response.body)}`,
-          { padding: 1 }
-        )
+        `\nNUEVO PETICION DE CONSULTA DE TICKET - ${req.params.ticket}`
       );
+      console.log("\nResultado:");
+      console.log(response.body);
+
+      //Fin de los prints
 
       res.send(response.body);
     });
