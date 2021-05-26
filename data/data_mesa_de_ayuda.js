@@ -191,9 +191,22 @@ exports.data = {
 
     grupo3: {
       tema: "Financiero",
-      usuario: ["agent_12433@uees"],
+      usuario: ["agent_12433@uees", "agent_12922@uees"],
       nivel: "POSTGRADO",
       modalidad: "DISTANCIA",
+      subtema: [
+        "No se ha gestionado mi reembolso",
+        "Notas de crédito (devoluciones) y becas",
+        "Ingreso de pago de colegiatura, matricula e inscripción",
+        "No refleja tabla de pago en el portal de servicios",
+        "No se ha registrado mi pago",
+        "Examen de ubicación de inglés",
+        "Examen de recuperación",
+        "Pagar certificaciones",
+        "Pagar re-matrícula",
+        "Pagar otra materia",
+        "Otros",
+      ],
       carrera: [],
     },
     grupo4: {
@@ -667,7 +680,7 @@ exports.data = {
     },
     grupo26: {
       tema: "Tecnológico",
-      usuario: ["Pendiente"],
+      usuario: ["agent_12429@uees","agent_12931@uees"],
       subtema: ["Correo Institucional", "Portal de Servicios"],
     },
   },
