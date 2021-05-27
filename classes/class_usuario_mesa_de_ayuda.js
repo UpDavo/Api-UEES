@@ -1,94 +1,118 @@
+//Imports necesarios
 const mesaDeAyuda = require("../data/data_mesa_de_ayuda");
 const request = require("request");
-const boxen = require("boxen");
+
+//Grupos de la mesa de ayuda segmentados de la base de datos JSON
+const academico = mesaDeAyuda.data.grupos.academico;
+const administrativo = mesaDeAyuda.data.grupos.administrativo;
+const financiero = mesaDeAyuda.data.grupos.financiero;
+const tecologico = mesaDeAyuda.data.grupos.tecnologico;
+const carrerasMedicina = mesaDeAyuda.data.carrerasMedicina;
+const medicina = mesaDeAyuda.data.medicina;
+const correosUsuarios = mesaDeAyuda.data.correosUsuarios;
 
 class UsuarioMesaDeAyuda {
-  constructor(nivel, modalidad, carrera, tema, subtema) {
+  constructor(nivel, modalidad, carrera, tema, subtema, helpTopic) {
     this.nivel = nivel;
     this.modalidad = modalidad;
     this.carrera = carrera;
     this.tema = tema;
     this.subtema = subtema;
+    this.helpTopic = helpTopic;
   }
 
+  //Obtiene el objeto creado para la mesa de ayuda
   getObject() {
-    return {
+    let data = {
       nivel: this.nivel,
       modalida: this.modalidad,
       carrera: this.carrera,
       tema: this.tema,
       subtema: this.subtema,
+      helpTopic: this.helpTopic,
     };
+    console.log(data);
   }
 
+  //Asigna un grupo al objeto ingresado
   asignarGrupo() {
     let user;
     let dataReturn;
 
-    if (mesaDeAyuda.data.carrerasMedicina.indexOf(this.carrera) != -1) {
-      for (const propiedad in mesaDeAyuda.data.medicina) {
+    //Esto realiza la validación si la petición es de medicina o no
+    if (carrerasMedicina.indexOf(this.carrera) != -1) {
+      //Esto asigna un grupo dependiendo de los datos de medicina
+      for (const i in medicina) {
         if (
           this.carrera ==
-            mesaDeAyuda.data.medicina[propiedad].carrera[
-              mesaDeAyuda.data.medicina[propiedad].carrera.indexOf(this.carrera)
-            ] &&
-          this.nivel == mesaDeAyuda.data.medicina[propiedad].nivel &&
-          this.modalidad == mesaDeAyuda.data.medicina[propiedad].modalidad &&
-          this.tema == mesaDeAyuda.data.medicina[propiedad].tema &&
-          this.subtema ==
-            mesaDeAyuda.data.medicina[propiedad].subtema[
-              mesaDeAyuda.data.medicina[propiedad].subtema.indexOf(this.subtema)
-            ]
+            medicina[i].carrera[medicina[i].carrera.indexOf(this.carrera)] &&
+          this.nivel == medicina[i].nivel &&
+          this.modalidad == medicina[i].modalidad &&
+          this.tema == medicina[i].tema &&
+          this.helpTopic ==
+            medicina[i].helpTopic[medicina[i].helpTopic.indexOf(this.helpTopic)]
         ) {
-          user = mesaDeAyuda.data.medicina[propiedad];
+          user = medicina[i];
         }
       }
     } else {
-      if (this.tema == "Tecnológico") {
-        for (const propiedad in mesaDeAyuda.data.tecnologia) {
-          mesaDeAyuda.data.tecnologia[propiedad].subtema.forEach(
-            (subtemasObjeto) => {
-              if (this.subtema == subtemasObjeto) {
-                user = mesaDeAyuda.data.tecnologia[propiedad];
-              }
-            }
-          );
-        }
-      } else {
-        if (this.tema == "Financiero") {
-          for (const propiedad in mesaDeAyuda.data.grupos) {
-            if (
-              this.tema == mesaDeAyuda.data.grupos[propiedad].tema &&
-              this.nivel == mesaDeAyuda.data.grupos[propiedad].nivel &&
-              this.modalidad == mesaDeAyuda.data.grupos[propiedad].modalidad &&
-              this.subtema ==
-                mesaDeAyuda.data.grupos[propiedad].subtema[
-                  mesaDeAyuda.data.grupos[propiedad].subtema.indexOf(
-                    this.subtema
-                  )
-                ]
-            ) {
-              user = mesaDeAyuda.data.grupos[propiedad];
-              console.log("usuario de financiero creado" + user);
-            }
-          }
-        } else {
-          for (const propiedad in mesaDeAyuda.data.grupos) {
+      //Valida que tipo de petición es
+      switch (this.tema) {
+        case "Académico":
+          for (const i in academico) {
             if (
               this.carrera ==
-                mesaDeAyuda.data.grupos[propiedad].carrera[
-                  mesaDeAyuda.data.grupos[propiedad].carrera.indexOf(
-                    this.carrera
-                  )
+                academico[i].carrera[
+                  academico[i].carrera.indexOf(this.carrera)
                 ] &&
-              this.nivel == mesaDeAyuda.data.grupos[propiedad].nivel &&
-              this.modalidad == mesaDeAyuda.data.grupos[propiedad].modalidad &&
-              this.tema == mesaDeAyuda.data.grupos[propiedad].tema
+              this.nivel == academico[i].nivel &&
+              this.modalidad == academico[i].modalidad
             ) {
-              user = mesaDeAyuda.data.grupos[propiedad];
+              user = academico[i];
             }
           }
-        }
+          break;
+        case "Administrativo":
+          for (const i in administrativo) {
+            if (
+              this.carrera ==
+                administrativo[i].carrera[
+                  administrativo[i].carrera.indexOf(this.carrera)
+                ] &&
+              this.nivel == administrativo[i].nivel &&
+              this.modalidad == administrativo[i].modalidad
+            ) {
+              user = administrativo[i];
+            }
+          }
+          break;
+        case "Financiero":
+          for (const i in financiero) {
+            if (
+              this.nivel == financiero[i].nivel &&
+              this.modalidad == financiero[i].modalidad &&
+              this.helpTopic ==
+                financiero[i].helpTopic[
+                  financiero[i].helpTopic.indexOf(this.helpTopic)
+                ]
+            ) {
+              user = financiero[i];
+            }
+          }
+          break;
+        case "Tecnológico":
+          for (const i in tecologico) {
+            if (
+              this.subtema ==
+              tecologico[i].subtema[tecologico[i].subtema.indexOf(this.subtema)]
+            ) {
+              user = tecologico[i];
+            }
+          }
+          break;
+        default:
+          console.log("Error no entro en el switch");
+          break;
       }
     }
 
@@ -96,20 +120,20 @@ class UsuarioMesaDeAyuda {
     let usuarioRandom =
       user.usuario[Math.floor(Math.random() * user.usuario.length)];
 
-    for (const usuario in mesaDeAyuda.data.correosUsuarios) {
-      if (
-        mesaDeAyuda.data.correosUsuarios[usuario].usuarioWolkvox ==
-        usuarioRandom
-      ) {
-        dataReturn = mesaDeAyuda.data.correosUsuarios[usuario];
+    for (const usuario in correosUsuarios) {
+      if (correosUsuarios[usuario].usuarioWolkvox == usuarioRandom) {
+        dataReturn = correosUsuarios[usuario];
       }
     }
 
     return dataReturn;
   }
 
+  //Crea un nuevo ticket
   crearTicket(req, res) {
-    //asignarGrupo(nivel, modalidad, carrera, tema, subtema)
+    //Imprime el objeto del ticket
+    this.getObject();
+    //asignarGrupo(nivel, modalidad, carrera, tema, subtema, helpTopic)
     const grupoAsignado = this.asignarGrupo();
 
     var enviado = {
@@ -175,6 +199,7 @@ class UsuarioMesaDeAyuda {
     });
   }
 
+  //Actualiza el email en wolkvox
   actualizarEmailTicket(req, res) {
     var options = {
       method: "PUT",

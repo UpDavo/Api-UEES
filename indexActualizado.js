@@ -76,7 +76,8 @@ app.post("/crearTicket", cors(), (req, res) => {
     parsedData.body.modalidad,
     parsedData.body.carrera,
     parsedData.body.tema,
-    parsedData.body.subtema
+    parsedData.body.subtema,
+    parsedData.body.helpTopic
   );
   usuarioCreado.crearTicket(parsedData, res);
 });
