@@ -132,7 +132,7 @@ class UsuarioMesaDeAyuda {
   //Crea un nuevo ticket
   crearTicket(req, res) {
     //Imprime el objeto del ticket
-    this.getObject();
+    //this.getObject();
     //asignarGrupo(nivel, modalidad, carrera, tema, subtema, helpTopic)
     const grupoAsignado = this.asignarGrupo();
 
@@ -169,6 +169,8 @@ class UsuarioMesaDeAyuda {
         }`,
       },
     };
+
+    console.log(enviado);
 
     request(enviado, function (error, response) {
       let dataFinal;

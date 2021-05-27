@@ -70,7 +70,6 @@ app.post("/crearTicket", cors(), (req, res) => {
       carrera: req.body.carrera,
     },
   };
-  console.log(parsedData);
   let usuarioCreado = new UsuarioMesaDeAyuda(
     parsedData.body.nivel,
     parsedData.body.modalidad,
