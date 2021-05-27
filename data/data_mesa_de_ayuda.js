@@ -7,6 +7,10 @@ exports.data = {
   ],
   correosUsuarios: [
     {
+      usuarioWolkvox: "agent_12922@uees",
+      correoWolkvox: "andreslindao@uees.edu.ec",
+    },
+    {
       usuarioWolkvox: "agent_12423@uees",
       correoWolkvox: "aquimiz@uees.edu.ec",
     },
