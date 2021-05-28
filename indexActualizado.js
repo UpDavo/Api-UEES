@@ -91,6 +91,39 @@ app.post("/actualizarEmailTicket", cors(), (req, res) => {
   usuarioSinData.actualizarEmailTicket(parsedData, res);
 });
 
+app.post("/crearTicketFull", cors(), async (req, res) => {
+  let parsedData = {
+    body: {
+      nombre: req.body.nombre,
+      codigoEstudiantil: req.body.codigoEstudiantil,
+      correoEstudiantil: req.body.correoEstudiantil,
+      nivel: req.body.nivel,
+      helpTopic: req.body.helpTopic,
+      comentario: req.body.comentario,
+      modalidad: req.body.modalidad,
+      subtema: req.body.subtema,
+      tema: req.body.tema,
+      urlPruebas: req.body.urlPruebas,
+      wolkvox_id: req.body.wolkvox_id,
+      carrera: req.body.carrera,
+    },
+  };
+  let usuarioCreado = new UsuarioMesaDeAyuda(
+    parsedData.body.nivel,
+    parsedData.body.modalidad,
+    parsedData.body.carrera,
+    parsedData.body.tema,
+    parsedData.body.subtema,
+    parsedData.body.helpTopic,
+    parsedData.body.correoEstudiantil
+  );
+  let emailActualizado = await usuarioCreado.actualizarEmailTicket();
+  let dataTicket = await usuarioCreado.crearTicket(parsedData);
+  console.log(emailActualizado);
+  console.log(dataTicket);
+  res.send();
+});
+
 //Puerto del servidor
 app.listen(port, () => {
   CFonts.say(`Servidor Iniciado en el puerto| ${port}!`, {
