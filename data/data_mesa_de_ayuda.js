@@ -344,7 +344,6 @@ exports.data = {
           "MAESTRIA EN GESTION COMERCIAL Y RELACIONES CON LOS CLIENTES",
           "MAESTRIA EN MARKETING DIGITAL",
           "MAESTRIA EN AUDITORIA DE TECNOLOGIAS DE LA INFORMACION",
-          "MAESTRIA EN SEGURIDAD Y SALUD OCUPACIONAL",
         ],
       },
       8: {
@@ -465,6 +464,13 @@ exports.data = {
           "ESPECIALIDAD EN MEDICINA INTERNA",
           "ESPECIALIDAD EN ANESTESIOLOGIA",
         ],
+      },
+      2: {
+        tema: "Administrativo",
+        usuario: ["agent_12431@uees"],
+        nivel: "POSTGRADO",
+        modalidad: "DISTANCIA",
+        carrera: ["MAESTRIA EN SEGURIDAD Y SALUD OCUPACIONAL"],
       },
     },
 
