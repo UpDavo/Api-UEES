@@ -531,7 +531,7 @@ exports.data = {
       },
       5: {
         tema: "Académico",
-        usuario: ["agent_12420@uees"],
+        usuario: ["agent_12418@uees"],
         nivel: "POSTGRADO",
         modalidad: "PRESENCIAL",
         carrera: [
@@ -542,7 +542,7 @@ exports.data = {
       },
       6: {
         tema: "Académico",
-        usuario: ["agent_12420@uees"],
+        usuario: ["agent_12424@uees"],
         nivel: "POSTGRADO",
         modalidad: "DISTANCIA",
         carrera: [
