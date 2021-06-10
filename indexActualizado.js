@@ -133,7 +133,7 @@ app.post("/crearTicketFull", cors(), async (req, res) => {
 });
 
 //Funcion tomar datos de reporte
-app.get("/reporteTickets/:fechaInicial/:fechaFinal", (req, res) => {
+app.get("/reporteTickets/:fechaInicial/:fechaFinal", cors(), (req, res) => {
   let reportes = new ReportesMesaDeAyuda(
     req.params.fechaFinal,
     req.params.fechaInicial
