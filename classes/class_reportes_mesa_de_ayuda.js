@@ -1,4 +1,5 @@
-const request = require("request");
+// const request = require("request");
+const fetch = require("node-fetch");
 const admin = require("firebase-admin");
 const db = admin.firestore();
 /*
@@ -23,6 +24,7 @@ class ReportesMesaDeAyuda {
 
   async pedirInformacion(res) {
     let arregloConPeticiones = [];
+    let arregloTotal = [];
 
     console.log(this.date_end);
     console.log(this.date_ini);
@@ -31,19 +33,26 @@ class ReportesMesaDeAyuda {
       .collection("tickets")
       .where("fechaDeCreacion", ">=", this.date_ini)
       .get();
+
     snapshot.docs.map((doc) => {
       arregloConPeticiones.push(doc.data());
     });
-    
-    console.log(arregloConPeticiones);
-    res.send(arregloConPeticiones);
 
-    /*
+    arregloConPeticiones.forEach(async (peticion) => {
+      let datos = await this.pedirDatos(peticion);
+      await arregloTotal.push(datos);
+    });
 
+    console.log(arregloTotal);
+    setTimeout(() => {
+      console.log(arregloTotal), res.send(arregloTotal);
+    }, 1000);
+  }
+
+  async pedirDatos(peticion) {
     var options = {
-      method: "GET",
+      method: "POST",
       proxy: process.env.QUOTAGUARDSTATIC_URL,
-      url: "https://crm.ipdialbox.com/server/API/cases/query.php",
       headers: {
         "Content-Type": "application/json",
         Cookie: "PHPSESSID=ole3087c9tfleg61o0m8p02pim",
@@ -52,22 +61,16 @@ class ReportesMesaDeAyuda {
         nit: "uees",
         modulo: "cases",
         campo: "idPrefijo",
-        valor: req.params.ticket,
+        valor: peticion.numeroTicket,
       }),
     };
-    request(options, function (error, response) {
-      if (error) throw new Error(error);
 
-      console.log(
-        `\nNUEVO PETICION DE CONSULTA DE TICKET - ${req.params.ticket}`
-      );
-      console.log("\nResultado:");
-      console.log(response.body);
-
-      //Fin de los prints
-
-      res.send(response.body);
-    });*/
+    let res = await fetch(
+      "https://crm.ipdialbox.com/server/API/cases/query.php",
+      options
+    );
+    let data = await res.json();
+    return data;
   }
 }
 
