@@ -6,10 +6,18 @@ var bodyParser = require("body-parser");
 const app = express();
 const CFonts = require("cfonts");
 
+//Firebase
+const admin = require("firebase-admin");
+const serviceAccount = require("./key.json");
+admin.initializeApp({
+  credential: admin.credential.cert(serviceAccount),
+});
+
 //Imports de clases para la app
 const UsuarioMesaDeAyuda = require("./classes/class_usuario_mesa_de_ayuda");
 const MesaDeAyuda = require("./classes/class_mesa_de_ayuda");
 const CampañaRedes = require("./classes/class_campañas_redes");
+const ReportesMesaDeAyuda = require("./classes/class_reportes_mesa_de_ayuda");
 
 //Constantes de clases
 const mesaDeAyuda = new MesaDeAyuda();
@@ -122,6 +130,15 @@ app.post("/crearTicketFull", cors(), async (req, res) => {
   console.log(emailActualizado);
   console.log(dataTicket);
   res.send();
+});
+
+//Funcion tomar datos de reporte
+app.get("/reporteTickets/:fechaInicial/:fechaFinal", (req, res) => {
+  let reportes = new ReportesMesaDeAyuda(
+    req.params.fechaFinal,
+    req.params.fechaInicial
+  );
+  reportes.pedirInformacion(res);
 });
 
 //Puerto del servidor

@@ -1,0 +1,157 @@
+[{
+    "idCase": "2161090736657450",
+    "caseType": "Request",
+    "priority": {
+        "name": "baja",
+        "value": 8640
+    },
+    "status": {
+        "name": "Abierto",
+        "value": "open"
+    },
+    "description_case": "Buenos d\u00edas requiero por favor me ayuden registrando el pago realizado a fin de poder tener acceso a la siguiente materia de mi curso de maestr\u00eda.\r\nGracias",
+    "closeDate": "",
+    "contactId": "60b1235bf1c7df7a072ff933",
+    "contact": "NO BORRAR MESA DE AYUDA",
+    "contactEmail": "fmendezg@uees.edu.ec",
+    "contactTel": "",
+    "contactIdentification": "000000000000",
+    "namecompany": "",
+    "owner": {
+        "id": "6535986083266560",
+        "name": "Karen Mishell Columbus Villegas - CRM - agent_12433@uees",
+        "mail": "agent_12433@uees",
+        "tel": ""
+    },
+    "prefix": "PET",
+    "responsible": {
+        "id": "6535986083266560",
+        "name": "Karen Mishell Columbus Villegas - CRM - agent_12433@uees",
+        "mail": "agent_12433@uees",
+        "tel": "",
+        "group": false
+    },
+    "groupsOwner": [],
+    "idPrefijo": "PET-2161090736657450",
+    "timeEstimated": "2021-06-16 09:07:36",
+    "reOpened": false,
+    "form": {
+        "Tipo de Requerimiento": "Financiero",
+        "Tema": "Pagos de Colegiatura",
+        "HELP TOPIC": "Ingreso de pago de colegiatura, matricula e inscripci\u00f3n",
+        "NIVEL": "POSTGRADO",
+        "MODALIDAD": "DISTANCIA",
+        "Correo estudiante": "fmendezg@uees.edu.ec",
+        "Nombre del Estudiante": "MENDEZ GUACHICHULCA FANNY ROSANA",
+        "adjunto": "https:\/\/www.jotform.com\/uploads\/uees\/211014238559654\/4991432070516555925\/Pago%20pension%20Fanny%20Mendez.pdf",
+        "Estudiante": {
+            "value": "fmendezg@uees.edu.ec",
+            "value_id": "6077476a9af2ef19eb1742d9"
+        }
+    },
+    "history": [{
+        "date": "10\/06\/2021 09:07:36",
+        "message": "Cre\u00f3 un caso",
+        "user": "API - crm"
+    }, {
+        "date": "10\/06\/2021 09:07:36",
+        "message": "Asign\u00f3 como responsable del caso a Karen Mishell Columbus Villegas - CRM - agent_12433@uees - agent_12433@uees",
+        "user": "API - crm"
+    }, {
+        "date": "10\/06\/2021 09:07:36",
+        "message": "Asign\u00f3 como estado del caso, baja",
+        "user": "API - crm"
+    }],
+    "wolkvox_fecha_creacion": "2021-06-10 09:07:36",
+    "wolkvox_usuario_creacion": "API",
+    "wolkvox_fecha_modificacion": "",
+    "wolkvox_usuario_modificacion": "",
+    "files": [],
+    "wolkvox_id": "60c21ca84d927a775e490114"
+}]
+
+
+
+
+
+[{
+    "idCase": "2167223530319633",
+    "caseType": "Request",
+    "priority": {
+        "value": 8640,
+        "name": "baja"
+    },
+    "status": {
+        "value": "closed",
+        "name": "Cerrado"
+    },
+    "description_case": "Por medio del presente, solicito la restauraci\u00f3n de todos mis cursos y\/o grabaciones que se encuentran en el Blackboard Learn. \r\n\r\nUna vez atendido favor notificarme. Muchas gracias.\r\n\r\nSaludos cordiales.",
+    "closeDate": "2021-06-09 14:54:53",
+    "contactId": "60b1235bf1c7df7a072ff933",
+    "contact": "NO BORRAR MESA DE AYUDA",
+    "contactEmail": "arianagiler@uees.edu.ec",
+    "contactTel": "",
+    "contactIdentification": "000000000000",
+    "namecompany": "",
+    "owner": {
+        "id": "5455835027210240",
+        "name": "Omar Maluk - CRM - agent_12985@uees",
+        "mail": "agent_12985@uees",
+        "tel": ""
+    },
+    "prefix": "PET",
+    "responsible": {
+        "id": "5455835027210240",
+        "name": "Omar Maluk - CRM - agent_12985@uees",
+        "mail": "omaluk@uees.edu.ec",
+        "group": false
+    },
+    "groupsOwner": [],
+    "idPrefijo": "PET-2167223530319633",
+    "timeEstimated": "2021-06-13 22:35:30",
+    "reOpened": false,
+    "form": {
+        "Tipo de Requerimiento": "Tecnol\u00f3gico",
+        "Tema": "Blackboard Learn Ultra",
+        "HELP TOPIC": "Reactivaci\u00f3n de cursos",
+        "Estudiante": {
+            "value": "jortegag@uees.edu.ec",
+            "value_id": "60994235cf828f7611761e6d",
+            "searchModuleName": "Estudiantes"
+        },
+        "NIVEL": "POSTGRADO",
+        "MODALIDAD": "PRESENCIAL",
+        "CARRERA": "",
+        "Nombre del Estudiante": "ORTEGA GONZALEZ JUAN IGNACIO",
+        "Correo estudiante": "jortegag@uees.edu.ec",
+        "adjunto": "",
+        "Observaciones pendiente": "",
+        "Estado Pendiente": ""
+    },
+    "history": [{
+        "date": "07\/06\/2021 22:35:30",
+        "message": "Cre\u00f3 un caso",
+        "user": "API - crm"
+    }, {
+        "date": "07\/06\/2021 22:35:30",
+        "message": "Asign\u00f3 como responsable del caso a Omar Maluk - CRM - agent_12985@uees - agent_12985@uees",
+        "user": "API - crm"
+    }, {
+        "date": "07\/06\/2021 22:35:30",
+        "message": "Asign\u00f3 como estado del caso, baja",
+        "user": "API - crm"
+    }, {
+        "color": "#383e6f",
+        "date": "2021\/6\/9 14:54:52",
+        "user": "Omar Maluk - CRM - Omar Maluk - CRM - agent_12985@uees",
+        "message": "Cambi\u00f3 el estado de Abierto a Cerrado"
+    }],
+    "wolkvox_fecha_creacion": "2021-06-07 22:35:30",
+    "wolkvox_usuario_creacion": "API",
+    "wolkvox_fecha_modificacion": "2021-06-09 14:54:53",
+    "wolkvox_usuario_modificacion": "agent_12985@uees",
+    "files": [],
+    "fileExit": [],
+    "solution": "Estimado Juan;<div><br><\/div><div>Lamentablemente cursos que ya han caducado (su periodo ya termino) son removidos de la plataforma por temas de espacio en los servidores, esto incluye las grabaciones.<\/div><div><br><\/div><div>Saludos<\/div><div><br><\/div><div>Omar<\/div>",
+    "wolkvox_id": "60bee5823ad85d61b3605e52"
+}]

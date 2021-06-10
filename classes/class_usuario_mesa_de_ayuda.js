@@ -1,6 +1,8 @@
 //Imports necesarios
 const mesaDeAyuda = require("../data/data_mesa_de_ayuda");
 const request = require("request");
+const admin = require("firebase-admin");
+const db = admin.firestore();
 
 //Grupos de la mesa de ayuda segmentados de la base de datos JSON
 const academico = mesaDeAyuda.data.grupos.academico;
@@ -186,6 +188,21 @@ class UsuarioMesaDeAyuda {
           usuarioAsesor: grupoAsignado.usuarioWolkvox,
         }),
       };
+
+      //Agrega la información a firebase
+
+      db.collection("tickets")
+        .doc()
+        .set({
+          numeroTicket: dataParseada.idPrefijo,
+          fechaDeCreacion: new Date(),
+        })
+        .then(() => {
+          console.log("Se ha creado un nuevo registro en firebase");
+        })
+        .catch((e) => {
+          console.log(e);
+        });
 
       //Imprime los parametros y el url
       console.log(
