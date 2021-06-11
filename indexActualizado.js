@@ -53,7 +53,7 @@ app.post("/campana2", cors(), (req, res) => {
 //Funcionalidad para las campañas que vienen de web
 app.post("/campana3", cors(), (req, res) => {
   let nuevaCampaña = new CampañaRedes();
-  nuevaCampaña.crearCampaña(req, res);
+  nuevaCampaña.crearCampañaOption(req, res);
   // nuevaCampaña.crearCampaña(req, res);
 });
 
