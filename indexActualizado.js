@@ -44,7 +44,14 @@ app.get("/", (req, res) => {
 });
 
 //Funcionalidad para las campañas que vienen de redes sociales
-app.post("/campana2", (req, res) => {
+app.post("/campana2", cors(), (req, res) => {
+  let nuevaCampaña = new CampañaRedes();
+  nuevaCampaña.crearCampaña(req, res);
+  // nuevaCampaña.crearCampaña(req, res);
+});
+
+//Funcionalidad para las campañas que vienen de web
+app.post("/campana3", cors(), (req, res) => {
   let nuevaCampaña = new CampañaRedes();
   nuevaCampaña.crearCampaña(req, res);
   // nuevaCampaña.crearCampaña(req, res);
