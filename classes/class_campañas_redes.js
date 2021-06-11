@@ -97,6 +97,8 @@ class CampañaRedes {
   }
 
   crearCampañaOption(req, res) {
+    console.log(req.body);
+
     //Inicializa el URL
     let url = new URL(this.APIWOLKBOX);
 
