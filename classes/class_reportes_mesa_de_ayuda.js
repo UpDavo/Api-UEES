@@ -26,12 +26,14 @@ class ReportesMesaDeAyuda {
     let arregloConPeticiones = [];
     let arregloTotal = [];
 
-    console.log(this.date_end);
     console.log(this.date_ini);
+    console.log(this.date_end);
 
     const snapshot = await db
       .collection("tickets")
       .where("fechaDeCreacion", ">=", this.date_ini)
+      .where("fechaDeCreacion", "<=", this.date_end)
+      .orderBy("fechaDeCreacion", "asc")
       .get();
 
     snapshot.docs.map((doc) => {
@@ -40,13 +42,13 @@ class ReportesMesaDeAyuda {
 
     arregloConPeticiones.forEach(async (peticion) => {
       let datos = await this.pedirDatos(peticion);
-      await arregloTotal.push(datos);
+      await arregloTotal.push(datos[0]);
     });
 
     console.log(arregloTotal);
     setTimeout(() => {
       console.log(arregloTotal), res.send(arregloTotal);
-    }, 1000);
+    }, 1300);
   }
 
   async pedirDatos(peticion) {
