@@ -161,6 +161,7 @@ class UsuarioMesaDeAyuda {
           "HELP TOPIC":"${req.body.helpTopic}",
           "NIVEL":"${req.body.nivel}",
           "MODALIDAD": "${req.body.modalidad}",
+          "CARRERA:" "${req.body.carrera}",
           "Correo estudiante": "${req.body.correoEstudiantil}",
           "Nombre del Estudiante": "${req.body.nombre}",
           "adjunto": "${req.body.urlPruebas}",
