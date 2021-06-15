@@ -1,6 +1,7 @@
 // const request = require("request");
 const fetch = require("node-fetch");
 const admin = require("firebase-admin");
+const csvjsonJson2csv = require("csvjson-json2csv");
 const db = admin.firestore();
 /*
 Types Report = agents_detail
@@ -17,7 +18,7 @@ class ReportesMesaDeAyuda {
     );
     this.date_end = new Date(
       date_end[0] + date_end[1] + date_end[2] + date_end[3],
-      parseInt(date_end[4] + date_end[5]) - 1,
+      parseInt(date_end[4] + date_end[5]),
       date_end[6] + date_end[7]
     );
   }
@@ -25,9 +26,6 @@ class ReportesMesaDeAyuda {
   async pedirInformacion(res) {
     let arregloConPeticiones = [];
     let arregloTotal = [];
-
-    console.log(this.date_ini);
-    console.log(this.date_end);
 
     const snapshot = await db
       .collection("tickets")
@@ -42,12 +40,36 @@ class ReportesMesaDeAyuda {
 
     arregloConPeticiones.forEach(async (peticion) => {
       let datos = await this.pedirDatos(peticion);
-      await arregloTotal.push(datos[0]);
+
+      let ordenado = {
+        id: datos[0].idPrefijo,
+        prioridad: datos[0].priority.name,
+        status: datos[0].status.name,
+        fecha_creacion: datos[0].wolkvox_fecha_creacion,
+        fecha_modificacion: datos[0].wolkvox_fecha_modificacion,
+        fecha_cierre: datos[0].closeDate,
+        tiempo_estimado: datos[0].timeEstimated,
+        asesor_asignado: datos[0].owner.name,
+        asesor_ultima_modificacio: datos[0].wolkvox_usuario_modificacion,
+        abierto_nuevamente: datos[0].reOpened,
+        tipo_de_requerimiento: datos[0].form["Tipo de Requerimiento"],
+        tema: datos[0].form["Tema"],
+        help_topic: datos[0].form["HELP TOPIC"],
+        nivel: datos[0].form["NIVEL"],
+        modalidad: datos[0].form["MODALIDAD"],
+        nombre_estudiante: datos[0].form["Nombre del Estudiante"],
+        correo_estudiante: datos[0].form["Correo estudiante"],
+        descripcion: datos.description_case,
+        adjunto: datos[0].form["adjunto"],
+      };
+
+      await arregloTotal.push(ordenado);
     });
 
-    console.log(arregloTotal);
     setTimeout(() => {
-      console.log(arregloTotal), res.send(arregloTotal);
+      var csv = csvjsonJson2csv(arregloTotal);
+      console.log(csv);
+      res.send(csv);
     }, 1300);
   }
 
