@@ -165,7 +165,7 @@ class UsuarioMesaDeAyuda {
           "Correo estudiante": "${req.body.correoEstudiantil}",
           "Nombre del Estudiante": "${req.body.nombre}",
           "adjunto": "${
-            req.body.urlPruebas == undefined
+            req.body.urlPruebas === undefined
               ? "No ha Ingresado Ninguna Prueba"
               : req.body.urlPruebas
           }",
