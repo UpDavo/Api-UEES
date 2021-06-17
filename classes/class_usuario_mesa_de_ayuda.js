@@ -166,7 +166,7 @@ class UsuarioMesaDeAyuda {
           "Nombre del Estudiante": "${req.body.nombre}",
           "adjunto": "${
             req.body.urlPruebas === undefined
-              ? "No ha Ingresado Ninguna Prueba"
+              ? "https://no-envio-pruebas.com"
               : req.body.urlPruebas
           }",
           "Estudiante": {
