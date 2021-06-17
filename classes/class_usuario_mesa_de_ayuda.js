@@ -164,7 +164,11 @@ class UsuarioMesaDeAyuda {
           "CARRERA": "${req.body.carrera}",
           "Correo estudiante": "${req.body.correoEstudiantil}",
           "Nombre del Estudiante": "${req.body.nombre}",
-          "adjunto": "${req.body.urlPruebas}",
+          "adjunto": "${
+            req.body.urlPruebas == undefined
+              ? "No ha Ingresado Ninguna Prueba"
+              : req.body.urlPruebas
+          }",
           "Estudiante": {
             "value":"${req.body.correoEstudiantil}",
             "value_id":"${req.body.wolkvox_id}"
