@@ -210,7 +210,7 @@ exports.data = {
       },
       3: {
         tema: "Financiero",
-        usuario: ["agent_12433@uees", "agent_12922@uees"],
+        usuario: ["agent_12433@uees"],
         nivel: "POSTGRADO",
         modalidad: "DISTANCIA",
         helpTopic: [
