@@ -1,7 +1,5 @@
 //Requires de librerias externas
 const request = require("request");
-const CFonts = require("cfonts");
-const boxen = require("boxen");
 
 //Imports de variables globales y bases de datos locales
 const global = require("../global/global_variables");
