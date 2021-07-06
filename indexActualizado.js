@@ -57,7 +57,7 @@ app.post("/campana3", (req, res) => {
 });
 
 //Funcionalidad para las campañas de un solo asesor
-app.post("/campana3", (req, res) => {
+app.post("/campanaSingle", (req, res) => {
   let nuevaCampaña = new CampañaRedes();
   nuevaCampaña.crearCampañaSingle(req, res);
 });
