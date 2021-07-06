@@ -54,7 +54,12 @@ app.post("/campana2", (req, res) => {
 app.post("/campana3", (req, res) => {
   let nuevaCampaña = new CampañaRedes();
   nuevaCampaña.crearCampañaOption(req, res);
-  // nuevaCampaña.crearCampaña(req, res);
+});
+
+//Funcionalidad para las campañas de un solo asesor
+app.post("/campana3", (req, res) => {
+  let nuevaCampaña = new CampañaRedes();
+  nuevaCampaña.crearCampañaSingle(req, res);
 });
 
 //Analisis de usuarios
