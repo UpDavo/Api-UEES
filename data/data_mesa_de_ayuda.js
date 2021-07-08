@@ -23,7 +23,7 @@ exports.data = {
       correoWolkvox: "aterana@uees.edu.ec",
     },
     {
-      usuarioWolkvox: "agent_12879@uees",
+      usuarioWolkvox: "agent_12431@uees",
       correoWolkvox: "cariasu@uees.edu.ec",
     },
     {
@@ -684,7 +684,7 @@ exports.data = {
       },
       12: {
         tema: "Académico",
-        usuario: ["agent_12879@uees"],
+        usuario: ["agent_12431@uees"],
         nivel: "POSTGRADO",
         modalidad: "PRESENCIAL",
         carrera: ["MAESTRIA EN SEGURIDAD Y SALUD OCUPACIONAL"],
