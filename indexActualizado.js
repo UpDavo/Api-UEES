@@ -153,6 +153,26 @@ app.get("/reporteTickets/:fechaInicial/:fechaFinal", cors(), (req, res) => {
   reportes.pedirInformacion(res);
 });
 
+//Funcion para monstrar páginas web de grado
+
+app.get("/views/grado/:carrera", cors(), (req, res) => {
+  res.redirect(`/grado?carrera=${req.params.carrera}`);
+});
+
+app.get("/grado", function (req, res) {
+  res.sendFile(__dirname + `/static/html/index-grado.html`);
+});
+
+//Funcion para monstrar páginas web de postgrado
+
+app.get("/views/postgrado/:maestria", cors(), (req, res) => {
+  res.redirect(`/postgrado?seleccion=${req.params.maestria}`);
+});
+
+app.get("/postgrado", function (req, res) {
+  res.sendFile(__dirname + `/static/html/index-postgrado.html`);
+});
+
 //Puerto del servidor
 app.listen(port, () => {
   CFonts.say(`Servidor Iniciado en el puerto| ${port}!`, {
@@ -161,7 +181,7 @@ app.listen(port, () => {
     colors: ["candy"], // define all colors
     background: "transparent", // define the background color, you can also use `backgroundColor` here as key
     letterSpacing: 1, // define letter spacing
-    lineHeight: 1, // define the line height
+    lineHeight: 1, // define the line height0
     space: true, // define if the output text should have empty lines on top and on the bottom
     maxLength: "0", // define how many character can be on one line
     gradient: false, // define your two gradient colors
