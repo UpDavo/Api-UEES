@@ -100,12 +100,34 @@ class CampañaRedes {
     //Inicializa el URL
     let url = new URL(this.APIWOLKBOX);
 
+    let listaProgramas = [
+      "MAESTRIA EN ADMINISTRACION DE EMPRESAS",
+      "MAESTRIA EN ADMINISTRACION PÚBLICA",
+      "MAESTRIA EN CONTABILIDAD Y FINANZAS",
+      "MAESTRIA EN CRIMINALISTICA Y CIENCIAS FORENSES",
+      "MAESTRIA EN DERECHO CON MENCION EN DERECHO DE EMPRESA",
+      "MAESTRIA EN DERECHO CONSTITUCIONAL",
+      "MAESTRIA EN DERECHO PENAL",
+      "MAESTRIA EN DERECHO PROCESAL",
+      "MAESTRIA EN GESTION DE LA CALIDAD",
+      "MAESTRIA EN GESTION DE PROYECTOS",
+      "MAESTRIA EN GESTION DE PROYECTOS-EN LINEA",
+      "MAESTRIA EN GESTION DEL TALENTO HUMANO",
+      "MAESTRIA EN GESTION EDUCATIVA",
+      "MAESTRIA EN GESTION EDUCATIVA - EN LINEA",
+      "MAESTRIA EN MANAGEMENT ESTRATEGICO",
+      "MAESTRIA EN MARKETING",
+      "MAESTRIA EN SEGURIDAD Y SALUD OCUPACIONAL - EN LINEA",
+    ];
+
     //Almacena los parametros del body
     const params = {
       token: this.TOKEN,
       action: "insert",
       type_campaing: "preview",
-      campaing: req.body.campana,
+      campaing: listaProgramas.includes(req.body.interesado)
+        ? "21514"
+        : req.body.campana,
       name: req.body.nombre,
       lastname: req.body.apellido,
       opt3: req.body.correo,
