@@ -134,7 +134,12 @@ class CampañaRedes {
       tel01: req.body.celular,
       opt4: req.body.comentario,
       opt2: req.body.interesado,
-      type_id: req.body.tipoId == "Cédula" ? "C" : "P",
+      type_id:
+        req.body.tipoId == "REDES"
+          ? req.body.tipoId
+          : req.body.tipoId == "Cédula"
+          ? "C"
+          : "P",
       id: req.body.id,
       opt1: req.body.origen,
       agent: `${next()}`,
