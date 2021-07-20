@@ -1,8 +1,9 @@
-<script src="https://cdnjs.cloudflare.com/ajax/libs/punycode/1.4.1/punycode.min.js"></script>
-<script src="https://cdn.jotfor.ms/static/prototype.forms.js" type="text/javascript"></script>
-<script src="https://cdn.jotfor.ms/static/jotform.forms.js?3.3.25954" type="text/javascript"></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/punycode/1.4.1/punycode.js"></script>
+<script src="https://cdn01.jotfor.ms/static/prototype.forms.js" type="text/javascript"></script>
+<script src="https://cdn02.jotfor.ms/static/jotform.forms.js?3.3.26544" type="text/javascript"></script>
 <script type="text/javascript">
     JotForm.init(function () {
+        /*INIT-START*/
         if (window.JotForm && JotForm.accessible) $('input_13').setAttribute('tabindex', 0);
         if (window.JotForm && JotForm.accessible) $('input_14').setAttribute('tabindex', 0);
         if (window.JotForm && JotForm.accessible) $('input_7').setAttribute('tabindex', 0);
@@ -25,12 +26,7 @@
         "qid": "2",
         "text": "Enviar",
         "type": "control_button"
-    }, {
-        "name": "registratePara",
-        "qid": "3",
-        "text": "Registrate para recibir mas informacion",
-        "type": "control_head"
-    }, null, {
+    }, null, null, {
         "description": "",
         "name": "correo",
         "qid": "5",
@@ -92,12 +88,7 @@
             "qid": "2",
             "text": "Enviar",
             "type": "control_button"
-        }, {
-            "name": "registratePara",
-            "qid": "3",
-            "text": "Registrate para recibir mas informacion",
-            "type": "control_head"
-        }, null, {
+        }, null, null, {
             "description": "",
             "name": "correo",
             "qid": "5",
@@ -155,12 +146,30 @@
         }]);
     }, 20);
 </script>
-<link type="text/css" media="print" rel="stylesheet" href="https://cdn.jotfor.ms/css/printForm.css?3.3.25954" />
-<link type="text/css" rel="stylesheet" href="https://cdn.jotfor.ms/themes/CSS/5e6b428acc8c4e222d1beb91.css?" />
-<link type="text/css" rel="stylesheet" href="https://cdn.jotfor.ms/css/styles/payment/payment_styles.css?3.3.25954" />
-<link type="text/css" rel="stylesheet" href="https://cdn.jotfor.ms/css/styles/payment/payment_feature.css?3.3.25954" />
+<style type="text/css">
+    @media print {
+        .form-section {
+            display: inline !important
+        }
+
+        .form-pagebreak {
+            display: none !important
+        }
+
+        .form-section-closed {
+            height: auto !important
+        }
+
+        .page-section {
+            position: initial !important
+        }
+    }
+</style>
+<link type="text/css" rel="stylesheet" href="https://cdn01.jotfor.ms/themes/CSS/5e6b428acc8c4e222d1beb91.css?" />
+<link type="text/css" rel="stylesheet" href="https://cdn02.jotfor.ms/css/styles/payment/payment_styles.css?3.3.26544" />
+<link type="text/css" rel="stylesheet"
+    href="https://cdn03.jotfor.ms/css/styles/payment/payment_feature.css?3.3.26544" />
 <style type="text/css" id="form-designer-style">
-    /* Injected CSS Code */
     body {
         background-color: #ffffff !important;
     }
@@ -340,7 +349,7 @@
         <ul class="form-section page-section">
             <li class="form-line form-line-column form-col-1 jf-required" data-type="control_textbox" id="id_13">
                 <label class="form-label form-label-top" id="label_13" for="input_13">
-                    Nombres
+                    Nombre
                     <span class="form-required">
                         *
                     </span>
@@ -353,7 +362,7 @@
             </li>
             <li class="form-line form-line-column form-col-2 jf-required" data-type="control_textbox" id="id_14">
                 <label class="form-label form-label-top" id="label_14" for="input_14">
-                    Apellidos
+                    Apellido
                     <span class="form-required">
                         *
                     </span>
@@ -381,7 +390,7 @@
                     </span>
                 </div>
             </li>
-            <li class="form-line jf-required" data-type="control_radio" id="id_6">
+            <li class="form-line form-line-column form-col-1 jf-required" data-type="control_radio" id="id_6">
                 <label class="form-label form-label-top form-label-auto" id="label_6" for="input_6">
                     Tipo de identificación
                     <span class="form-required">
@@ -407,7 +416,7 @@
                     </div>
                 </div>
             </li>
-            <li class="form-line jf-required" data-type="control_textbox" id="id_7">
+            <li class="form-line form-line-column form-col-2 jf-required" data-type="control_textbox" id="id_7">
                 <label class="form-label form-label-top form-label-auto" id="label_7" for="input_7">
                     Número de identificación
                     <span class="form-required">
@@ -451,7 +460,7 @@
                 <label class="form-label form-label-top form-label-auto" id="label_11" for="input_11"> Comentario
                 </label>
                 <div id="cid_11" class="form-input-wide" data-layout="full">
-                    <textarea id="input_11" class="form-textarea" name="q11_comentario" style="width:648px;height:163px"
+                    <textarea id="input_11" class="form-textarea" name="q11_comentario" style="width:648px;height:50px"
                         data-component="textarea" aria-labelledby="label_11"></textarea>
                 </div>
             </li>
@@ -493,5 +502,5 @@
         console.log(inputPrograma.value);
     </script>
 </form>
-<script src="https://cdn.jotfor.ms//js/vendor/smoothscroll.min.js?v=3.3.25954"></script>
-<script src="https://cdn.jotfor.ms//js/errorNavigation.js?v=3.3.25954"></script>
+<script src="https://cdn.jotfor.ms//js/vendor/smoothscroll.min.js?v=3.3.26544"></script>
+<script src="https://cdn.jotfor.ms//js/errorNavigation.js?v=3.3.26544"></script>
