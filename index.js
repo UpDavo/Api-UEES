@@ -8,9 +8,9 @@ const CFonts = require("cfonts");
 
 //Firebase
 const admin = require("firebase-admin");
-const serviceAccount = require("./key.json");
+const serviceAccount = require("./Ticket/auth/key");
 admin.initializeApp({
-  credential: admin.credential.cert(serviceAccount),
+  credential: admin.credential.cert(serviceAccount.data),
 });
 
 //Imports de clases para los tickets
