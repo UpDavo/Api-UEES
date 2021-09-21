@@ -1,4 +1,4 @@
-# Heimdal - WhatsApp Notifications
+# UEES - API for managing tickets
 
 This project was generated with [Node and npm](https://nodejs.org/es/)
 
