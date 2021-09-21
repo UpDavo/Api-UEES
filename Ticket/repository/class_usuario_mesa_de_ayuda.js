@@ -1,5 +1,5 @@
 //Imports necesarios
-const mesaDeAyuda = require("../data/data_mesa_de_ayuda");
+const mesaDeAyuda = require("../model/data_mesa_de_ayuda");
 const request = require("request");
 const admin = require("firebase-admin");
 const db = admin.firestore();

@@ -8,16 +8,18 @@ const CFonts = require("cfonts");
 
 //Firebase
 const admin = require("firebase-admin");
-const serviceAccount = require("./key.json");
+const serviceAccount = require("./Ticket/auth/key.json");
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
 });
 
-//Imports de clases para la app
-const UsuarioMesaDeAyuda = require("./classes/class_usuario_mesa_de_ayuda");
-const MesaDeAyuda = require("./classes/class_mesa_de_ayuda");
-const CampañaRedes = require("./classes/class_campañas_redes");
-const ReportesMesaDeAyuda = require("./classes/class_reportes_mesa_de_ayuda");
+//Imports de clases para los tickets
+const UsuarioMesaDeAyuda = require("./Ticket/repository/class_usuario_mesa_de_ayuda");
+const MesaDeAyuda = require("./Ticket/repository/class_mesa_de_ayuda");
+const ReportesMesaDeAyuda = require("./Ticket/repository/class_reportes_mesa_de_ayuda");
+
+//Imports de clases para los leads
+const CampañaRedes = require("./Leads/repository/class_campañas_redes");
 
 //Constantes de clases
 const mesaDeAyuda = new MesaDeAyuda();
@@ -40,14 +42,13 @@ const httpsAgent = new https.Agent({
 
 //Funcion de la api test
 app.get("/", (req, res) => {
-  return res.send("Hola esta es la aaaaaaaaaaapi");
+  res.sendFile(__dirname + `/Main/ui/html/index.html`);
 });
 
 //Funcionalidad para las campañas que vienen de redes sociales
 app.post("/campana2", (req, res) => {
   let nuevaCampaña = new CampañaRedes();
   nuevaCampaña.crearCampaña(req, res);
-  // nuevaCampaña.crearCampaña(req, res);
 });
 
 //Funcionalidad para las campañas que vienen de web
@@ -72,7 +73,7 @@ app.get("/consultarTicket/:ticket", cors(), (req, res) => {
   mesaDeAyuda.consultarTicket(req, res);
 });
 
-//Crea un ticket pepa
+//Crea un ticket
 app.post("/crearTicket", cors(), (req, res) => {
   let parsedData = {
     body: {
@@ -111,6 +112,7 @@ app.post("/actualizarEmailTicket", cors(), (req, res) => {
   usuarioSinData.actualizarEmailTicket(parsedData, res);
 });
 
+//Crea un ticket completo
 app.post("/crearTicketFull", cors(), async (req, res) => {
   let parsedData = {
     body: {
@@ -154,23 +156,21 @@ app.get("/reporteTickets/:fechaInicial/:fechaFinal", cors(), (req, res) => {
 });
 
 //Funcion para monstrar páginas web de grado
-
 app.get("/views/grado/:carrera", cors(), (req, res) => {
   res.redirect(`/grado?carrera=${req.params.carrera}`);
 });
 
 app.get("/grado", function (req, res) {
-  res.sendFile(__dirname + `/static/html/index-grado.html`);
+  res.sendFile(__dirname + `/Leads/ui/html/index-grado.html`);
 });
 
 //Funcion para monstrar páginas web de postgrado
-
 app.get("/views/postgrado/:maestria", cors(), (req, res) => {
   res.redirect(`/postgrado?seleccion=${req.params.maestria}`);
 });
 
 app.get("/postgrado", function (req, res) {
-  res.sendFile(__dirname + `/static/html/index-postgrado.html`);
+  res.sendFile(__dirname + `/Leads/ui/html/index-postgrado.html`);
 });
 
 //Puerto del servidor

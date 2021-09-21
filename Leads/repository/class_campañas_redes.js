@@ -2,11 +2,11 @@
 const request = require("request");
 
 //Imports de variables globales y bases de datos locales
-const global = require("../global/global_variables");
+const global = require("../model/global_variables");
 
 const roundround = require("roundround");
 //Require de base de datos
-const asesoresComerciales = require("../data/data_wolkvox");
+const asesoresComerciales = require("../model/data_wolkvox");
 
 //Inicialización de datos
 var next = roundround(asesoresComerciales.data);
