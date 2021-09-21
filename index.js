@@ -8,7 +8,7 @@ const CFonts = require("cfonts");
 
 //Firebase
 const admin = require("firebase-admin");
-const serviceAccount = require("./Ticket/auth/key.json");
+const serviceAccount = require("./key.json");
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
 });
