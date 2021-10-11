@@ -1,3 +1,6 @@
+// this will allow us to import our variable
+require("dotenv").config();
+
 //Import necesarios para que la aplicación funcione
 const express = require("express");
 const https = require("https");
@@ -13,6 +16,9 @@ admin.initializeApp({
   credential: admin.credential.cert(serviceAccount.data),
 });
 
+//Imports de clases para Notion
+const Notion = require("./Notion/repository/class_notion");
+
 //Imports de clases para los tickets
 const UsuarioMesaDeAyuda = require("./Ticket/repository/class_usuario_mesa_de_ayuda");
 const MesaDeAyuda = require("./Ticket/repository/class_mesa_de_ayuda");
@@ -23,6 +29,7 @@ const CampañaRedes = require("./Leads/repository/class_campañas_redes");
 
 //Constantes de clases
 const mesaDeAyuda = new MesaDeAyuda();
+const instanciaNotion = new Notion();
 
 //Funciones para que la app use json
 // parse application/x-www-form-urlencoded
@@ -43,6 +50,21 @@ const httpsAgent = new https.Agent({
 //Funcion de la api test
 app.get("/", (req, res) => {
   res.sendFile(__dirname + `/Main/ui/html/index.html`);
+});
+
+//Funcion de notion para obtener base
+app.get("/getNotionData/:id", (req, res) => {
+  const databaseId = req.params.id;
+  instanciaNotion
+    .getDatabase(databaseId)
+    .then((response) => res.send(response));
+});
+
+//Funcion de notion para insertar dentro de la base
+app.post("/setNotionData", (req, res) => {
+  console.log(req.body);
+  let result = instanciaNotion.setItemDatabase(req.body);
+  res.send(result);
 });
 
 //Funcionalidad para las campañas que vienen de redes sociales
