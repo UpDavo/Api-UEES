@@ -1,9 +1,3 @@
-<!-- <?php
-header("Content-Type: text/html;charset=utf-8");
-
-$carrera = $_GET["carrera"]
-?> -->
-
 <style>
     #_form_184_ {
         font-size: 14px;
@@ -552,14 +546,13 @@ $carrera = $_GET["carrera"]
                     <input type="text" name="phone" placeholder="Escriba su número de teléfono" required />
                 </div>
             </div>
-            <div class="_form_element _field22 _full_width " style="display: none;">
+            <div class="_form_element _field22 _full_width ">
                 <label class="_form-label">
                     Carrera de grado de interés*
                 </label>
                 <div class="_field-wrapper">
-                    <select name="field[22]" id="select" required disabled>
-                        <option selected value="<?php echo $carrera ?>">
-                            <?php echo $carrera ?>
+                    <select name="field[22]" required disabled>
+                        <option selected value="" id=" selected">
                         </option>
                     </select>
                 </div>
@@ -577,11 +570,12 @@ $carrera = $_GET["carrera"]
         </div>
     </form>
     <!-- <script type="text/javascript" src="./formulario.js"></script> -->
-    <script type="text/javascript">
+    <script>
         const urlParams = new URLSearchParams(window.location.search);
-        const carrera = urlParams.get('carrera');
-        //const selectedIndex = document.getElementById("select").selectedIndex = "0";
-        console.log(carrera);
+        const myParam = urlParams.get('carrera');
+        const inputPrograma = document.getElementById("selected");
+        inputPrograma.value = myParam;
+        console.log(inputPrograma.value);
     </script>
     <script type="text/javascript">
         window.cfields = {
@@ -915,7 +909,7 @@ $carrera = $_GET["carrera"]
                 e.preventDefault();
                 if (validate_form()) {
                     // use this trick to get the submit button & disable it using plain javascript
-                    window.open('./thankyou.php', '_self')
+                    window.open('www.uees.edu.ec/thankyou.html', '_self')
                     document.querySelector('#_form_184_submit').disabled = true;
                     var serialized = _form_serialize(document.getElementById('_form_184_'));
                     var err = form_to_submit.querySelector('._form_error');
