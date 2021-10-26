@@ -546,12 +546,12 @@
                     <input type="text" name="phone" placeholder="Escriba su número de teléfono" required />
                 </div>
             </div>
-            <div class="_form_element _field22 _full_width" id="selected">
+            <div class="_form_element _field22 _full_width">
                 <label class="_form-label">
                     Carrera de grado de interés*
                 </label>
                 <div class="_field-wrapper">
-                    <select name="field[22]" required disabled>
+                    <select name="field[22]" required disabled id="selected">
                         <option selected value="">
                         </option>
                     </select>
@@ -578,6 +578,9 @@
         var opt = document.createElement("option");
         opt.value = myParam;
         opt.text = myParam;
+
+        sel.add(opt, 0)
+        sel.value = "0";
 
         console.log(opt.value);
     </script>
