@@ -573,13 +573,15 @@
     <script>
         const urlParams = new URLSearchParams(window.location.search);
         const myParam = urlParams.get('carrera');
-        var sel = document.getElementById("selected");
 
         var opt = document.createElement("option");
         opt.value = myParam;
         opt.text = myParam;
 
-        sel.add(opt, 0)
+        var sel = document.getElementById("selected");
+
+        sel.add(opt, 0);
+        sel.selectedIndex = 0;
 
         console.log(opt.value);
     </script>
