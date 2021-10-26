@@ -546,13 +546,13 @@
                     <input type="text" name="phone" placeholder="Escriba su número de teléfono" required />
                 </div>
             </div>
-            <div class="_form_element _field22 _full_width ">
+            <div class="_form_element _field22 _full_width" id="selected">
                 <label class="_form-label">
                     Carrera de grado de interés*
                 </label>
                 <div class="_field-wrapper">
                     <select name="field[22]" required disabled>
-                        <option selected value="" id=" selected">
+                        <option selected value="">
                         </option>
                     </select>
                 </div>
@@ -573,9 +573,13 @@
     <script>
         const urlParams = new URLSearchParams(window.location.search);
         const myParam = urlParams.get('carrera');
-        const inputPrograma = document.getElementById("selected");
-        inputPrograma.value = myParam;
-        console.log(inputPrograma.value);
+        var sel = document.getElementById("selected");
+
+        var opt = document.createElement("option");
+        opt.value = myParam;
+        opt.text = myParam;
+
+        console.log(opt.value);
     </script>
     <script type="text/javascript">
         window.cfields = {
